@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+		<h4>Fotografie</h4>
+		<ul>
+			<li th:each="foto : ${photos}">
+			
+			<!-- nel link si specifica l'url al quale punta il link
+			costuiamo il link con foto/identificatoreFoto -->
+				
+				<a th:href="@{'/foto' + '/' + ${foto.id}}"
+				th:text="${foto.nome}"> Foto1 </a>
+				</li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -22,7 +22,7 @@ public class Album {
 	@ManyToOne
 	private Fotografo fotografo;
 	@OneToMany
-	private List<Fotografia> fotografie;
+	private List<Foto> fotografie;
 	
 	public Album() {
 		
@@ -33,7 +33,7 @@ public class Album {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.fotografie = new LinkedList<Fotografia>();
+		this.fotografie = new LinkedList<Foto>();
 	}
 	
 	
@@ -64,11 +64,11 @@ public class Album {
 		this.fotografo = fotografo;
 	}
 
-	public List<Fotografia> getFotografie() {
+	public List<Foto> getFotografie() {
 		return fotografie;
 	}
 
-	public void setFotografie(List<Fotografia> fotografie) {
+	public void setFotografie(List<Foto> fotografie) {
 		this.fotografie = fotografie;
 	}
 	

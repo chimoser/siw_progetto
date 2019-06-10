@@ -19,7 +19,7 @@ public class Fotografo {
 	private String cognome;
 	
 	@OneToMany(mappedBy="fotografo")
-	private List<Fotografia> fotografie;
+	private List<Foto> fotografie;
 	
 	@OneToMany(mappedBy="fotografo")
 	private List<Album> album;
@@ -33,7 +33,7 @@ public class Fotografo {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.fotografie = new ArrayList<Fotografia>();
+		this.fotografie = new ArrayList<Foto>();
 	}
 
 	public Long getId() {
@@ -60,11 +60,11 @@ public class Fotografo {
 		this.cognome = cognome;
 	}
 
-	public List<Fotografia> getFotografie() {
+	public List<Foto> getFotografie() {
 		return fotografie;
 	}
 
-	public void setFotografie(List<Fotografia> fotografie) {
+	public void setFotografie(List<Foto> fotografie) {
 		this.fotografie = fotografie;
 	}
 
