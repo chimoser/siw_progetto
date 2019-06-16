@@ -13,8 +13,10 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.silph.service.PhotoService;
 
@@ -28,8 +30,8 @@ public class PhotoController{
     ServletContext servletContext;
 
 
-    @RequestMapping(value="/photos/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
-//    @ResponseBody
+   /* @RequestMapping(value="/photos/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
+    @ResponseBody
     public byte[] getPhoto(@PathVariable String id) throws IOException {
         if (id != null) {
             //TODO controlli sull'id
@@ -40,6 +42,18 @@ public class PhotoController{
         }
         return null;
 
-    }
+    }*/
+    
+    @RequestMapping(value ="/photos/{id}", method = RequestMethod.GET)
+    public String ritornaLaPaginaConStudenteCorrispondenteAIdS (@PathVariable ("id") Long id, Model model) {
+		if (id!=null) {
+			model.addAttribute("photo", this.photoService.photoPerId(id));
+			return "photo.html";
+		}
+		else {
+			model.addAttribute("photos", this.photoService.tutte());
+			return "photos.html";
+		}			
+	}
 
 }
