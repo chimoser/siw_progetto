@@ -31,7 +31,7 @@ public class FunzionarioService {
 		return (List<Funzionario>) funzionarioRepository.findAll();
 	}
 	
-	public Funzionario funzionarioPerNome(String nome) {
-		return this.funzionarioRepository.findByNome(nome);
+	public Funzionario funzionarioPerUsername(String username) {
+		return this.funzionarioRepository.findByUsername(username);
 	}
 }

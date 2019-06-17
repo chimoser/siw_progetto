@@ -6,5 +6,5 @@ import it.uniroma3.siw.silph.model.Funzionario;
 
 public interface FunzionarioRepository extends CrudRepository<Funzionario, Long>{
 
-	public Funzionario findByNome(String nome);
+	public Funzionario findByUsername(String username);
 }

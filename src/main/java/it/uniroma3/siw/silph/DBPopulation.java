@@ -32,8 +32,8 @@ public class DBPopulation implements ApplicationRunner {
 	public void addAll() throws IOException, InterruptedException {
 		System.out.print("Aggiungo funzionari");
 		
-		Funzionario f1 = new Funzionario(1L,"Silvia", "Martini", "silviamartini", null, "ADMIN");
-		String f1Password = new BCryptPasswordEncoder().encode("smpass");
+		Funzionario f1 = new Funzionario(1L,"Silvia", "Martini", "sm", null, "ADMIN");
+		String f1Password = new BCryptPasswordEncoder().encode("sm");
 	    f1.setPassword(f1Password);
 		this.funzionarioRepository.save(f1);
 
@@ -42,5 +42,7 @@ public class DBPopulation implements ApplicationRunner {
 	    f2.setPassword(f2Password);
 		this.funzionarioRepository.save(f2);
 		
+		Funzionario f3= new Funzionario(3L, "Leo", "fax", "leo", new BCryptPasswordEncoder().encode("leo"), "ADMIN");
+		this.funzionarioRepository.save(f3);
 	}
 }
