@@ -3,21 +3,21 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Welcome</title>
 </head>
 
 <body>
 	<h1>
-		Benvenuto, <span th:utext="${username}"></span>
+		Benvenuto, <span th:utext="${username}" ></span>
 	</h1>
+	
+	<a th:href="@{/fotografia}">Aggiungi foto</a>
+	<a th:href="@{/fotografo}">Aggiungi fotografo</a>
+	<a th:href="@{/album}">Aggiungi album</a>
 
-	<h3 th:if="${role} == 'ADMIN'">
-		<a href="/admin">Visita la pagina dell'amministratore</a>
-	</h3>
-
-	<h5>
+	<h4>
 		<a href="/logout">Logout</a>
-	</h5>
+	</h4>
 
 </body>
 </html>

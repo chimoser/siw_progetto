@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.silph.model.Fotografia;
 import it.uniroma3.siw.silph.model.Funzionario;
+import it.uniroma3.siw.silph.service.FotografoService;
 import it.uniroma3.siw.silph.service.PhotoService;
 
 @Controller
@@ -33,6 +34,9 @@ public class PhotoController{
     PhotoService photoService;
 
     ServletContext servletContext;
+    
+    @Autowired
+	private FotografoService fotografoService;
 
 
    /* @RequestMapping(value="/photos/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
@@ -49,12 +53,12 @@ public class PhotoController{
 
     }*/
     
-    @RequestMapping(value = "/fotografia", method = RequestMethod.POST)
-	public void inserisciFotografiaNelSistema(Fotografia foto, 
-			Model model, BindingResult bindingResult) {
-				
-			this.photoService.inserisci(foto);
-	}		
+    @RequestMapping(value = "/fotografia", method = RequestMethod.GET)
+	public String inserisciFotografiaNelSistema(Model model) {
+		model.addAttribute("fotografi", fotografoService.tuttiFotografi());
+         model.addAttribute("fotografia",new Fotografia());
+         return "fotoForm";
+	}			
     
     @RequestMapping(value ="/photos/{id}", method = RequestMethod.GET)
     public String ritornaLaPaginaConStudenteCorrispondenteAIdS (@PathVariable ("id") Long id, Model model) {
