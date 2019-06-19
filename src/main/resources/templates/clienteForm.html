@@ -7,7 +7,8 @@
 	</div>
 
 
-	<form th:action="@{/richiestaCliente}" method="GET" th:object="${cliente}">
+	<form th:action="@{/richiestaCliente}" method="GET"
+		th:object="${cliente}">
 		<table>
 			<tr>
 
@@ -20,7 +21,17 @@
 				<td><input type="text" th:field="*{cognome}" /></td>
 				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
 			</tr>
-			
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" th:field="*{email}" /></td>
+				<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+			</tr>
+			<tr>
+				<td>Foto da acquistare:</td>
+				<td><input type="text" th:field="*{cognome}" /></td>
+				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
+			</tr>
+
 			<tr>
 				<td><button type="submit">Invio</button></td>
 			</tr>
