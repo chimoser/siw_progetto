@@ -13,19 +13,32 @@ public class Foto {
 	@GeneratedValue( strategy=GenerationType.AUTO )
 	private Long id;
 	private String nome;
+	private String link;
 	
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
 	@ManyToOne
 	private Fotografo fotografo;
 
+	@ManyToOne
+	private Album album;
+	
 	public Foto() {
 		
 	}
 	
-	public Foto(Long id, String nome, Fotografo fotografo) {
+	public Foto(Long id, String nome, Fotografo fotografo,Album album) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.fotografo = fotografo;
+		this.album = album;
 	}
 
 	public Long getId() {
@@ -51,6 +64,14 @@ public class Foto {
 	public void setFotografo(Fotografo fotografo) {
 		this.fotografo = fotografo;
 	}
-	
+
+	public Album getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
+		
 	
 }

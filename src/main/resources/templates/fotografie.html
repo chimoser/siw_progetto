@@ -10,10 +10,6 @@
 		<h4>Fotografie</h4>
 		<ul>
 			<li th:each="foto : ${photos}">
-			
-			<!-- nel link si specifica l'url al quale punta il link
-			costuiamo il link con foto/identificatoreFoto -->
-				
 				<a th:href="@{'/foto' + '/' + ${foto.id}}"
 				th:text="${foto.nome}"> Foto1 </a>
 				</li>
