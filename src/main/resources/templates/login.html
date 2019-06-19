@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+ <meta charset="UTF-8"/>
+    <title>Login </title>
+</head>
+
+<body>
+	<div>
+		<h4>Login</h4>
+	</div>
+
+	<form th:action="funzionario" method="POST" th:object="funzionario">
+		<table>
+			<tr>
+
+				<td>Nome:</td>
+				<td><input type="text" th:field="*{nome}" /></td>
+				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="text" th:field="*{password}" /></td>
+				<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
+			</tr>
+			<tr>
+				<td><button type="submit">Login</button></td>
+			</tr>
+		</table>
+	</form>
+</body>
