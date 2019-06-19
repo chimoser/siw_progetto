@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Fotografia {
+public class Foto {
 
 	@Id
 	@GeneratedValue( strategy=GenerationType.AUTO )
@@ -16,16 +16,20 @@ public class Fotografia {
 	
 	@ManyToOne
 	private Fotografo fotografo;
+	
+	@ManyToOne
+	private Album album;
 
-	public Fotografia() {
+	public Foto() {
 		
 	}
 	
-	public Fotografia(Long id, String nome, Fotografo fotografo) {
+	public Foto(Long id, String nome, Fotografo fotografo, Album album) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.fotografo = fotografo;
+		this.album = album;
 	}
 
 	public Long getId() {
@@ -51,6 +55,15 @@ public class Fotografia {
 	public void setFotografo(Fotografo fotografo) {
 		this.fotografo = fotografo;
 	}
+
+	public Album getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
+	
 	
 	
 }

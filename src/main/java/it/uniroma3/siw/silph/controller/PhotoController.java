@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.siw.silph.model.Fotografia;
+import it.uniroma3.siw.silph.model.Foto;
 import it.uniroma3.siw.silph.model.Funzionario;
 import it.uniroma3.siw.silph.service.FotografoService;
 import it.uniroma3.siw.silph.service.PhotoService;
@@ -56,7 +56,7 @@ public class PhotoController{
     @RequestMapping(value = "/fotografia", method = RequestMethod.GET)
 	public String inserisciFotografiaNelSistema(Model model) {
 		model.addAttribute("fotografi", fotografoService.tuttiFotografi());
-         model.addAttribute("fotografia",new Fotografia());
+         model.addAttribute("fotografia",new Foto());
          return "fotoForm";
 	}			
     
