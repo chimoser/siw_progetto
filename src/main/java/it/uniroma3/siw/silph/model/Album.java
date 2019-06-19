@@ -16,8 +16,8 @@ public class Album {
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long id;
-	private String name;
-	private String description;
+	private String nome;
+	private String descrizione;
 	
 	@ManyToOne
 	private Fotografo fotografo;
@@ -31,8 +31,8 @@ public class Album {
 	public Album(Long id, String name, String description) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.description = description;
+		this.nome = name;
+		this.descrizione = description;
 		this.fotografie = new LinkedList<Fotografia>();
 	}
 	
@@ -43,17 +43,17 @@ public class Album {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String name) {
+		this.nome = name;
 	}
-	public String getDescription() {
-		return description;
+	public String getDescrizione() {
+		return descrizione;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescrizione(String description) {
+		this.descrizione = description;
 	}
 
 	public Fotografo getFotografo() {
