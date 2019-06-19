@@ -17,7 +17,7 @@ public class AlbumService {
 	private AlbumRepository albumRepository;
 	
 	@Transactional
-	public List<Album> getAllAlbum(){
+	public List<Album> getAll(){
 		List<Album> albums = new ArrayList<>();
 		albumRepository.findAll().forEach(albums::add);
 		return albums;

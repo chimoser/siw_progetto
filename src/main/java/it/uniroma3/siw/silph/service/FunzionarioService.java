@@ -27,7 +27,7 @@ public class FunzionarioService {
 	}
 	
 	@Transactional
-	public List<Funzionario> tuttiFunzionari(){
+	public List<Funzionario> findAll(){
 		return (List<Funzionario>) funzionarioRepository.findAll();
 	}
 	

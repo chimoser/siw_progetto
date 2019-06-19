@@ -27,10 +27,10 @@ public class MainController {
         model.addAttribute("username", details.getUsername());
         model.addAttribute("role", role);
 
-        return "welcome";
+        return "admin/welcome";
     }
 	
-	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
     public String admin(Model model) {
         UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String role = details.getAuthorities().iterator().next().getAuthority();
@@ -38,5 +38,5 @@ public class MainController {
         model.addAttribute("role", role);
 
         return "admin";
-    }
+    }*/
 }

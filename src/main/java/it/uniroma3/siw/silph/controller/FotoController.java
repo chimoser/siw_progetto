@@ -17,16 +17,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.silph.model.Album;
 import it.uniroma3.siw.silph.model.Foto;
+import it.uniroma3.siw.silph.model.Funzionario;
+import it.uniroma3.siw.silph.service.AlbumService;
 import it.uniroma3.siw.silph.service.FotoService;
+import it.uniroma3.siw.silph.service.FunzionarioService;
 
 @Controller
-//@RequestMapping("/pictures")
+@RequestMapping("/foto")
 public class FotoController{
 
     @Autowired
     private FotoService fotoService;
     @Autowired
-    private Funzionario funzionarioService;
+    private FunzionarioService funzionarioService;
+    @Autowired
+    private AlbumService albumService;
     
     private ServletContext servletContext;
 
@@ -45,7 +50,7 @@ public class FotoController{
     }
 	*/
     
-	@RequestMapping("/fotografie/{id}")
+	@RequestMapping("/{id}")
 	public String getPhoto(@PathVariable Long id, Model model) {
 		if(id!=null) {
 			model.addAttribute("foto", this.fotoService.getPhotoById(id));
@@ -59,28 +64,27 @@ public class FotoController{
 	
 	
 	/*the GET method is default, now I need a POST */
-	@RequestMapping(method=RequestMethod.POST, value="/fotografie")
+	@RequestMapping(method=RequestMethod.POST, value="/save")
 	public String addPhoto(@RequestBody Foto photo, Model model) {
 		model.addAttribute("fotografia", new Foto());
 		fotoService.addPhoto(photo);
-		return "fotoForm.html";		
+		return "admin/mostraFoto.html";		
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/fotografie/{id}") // i want that particular id to change
+	@RequestMapping(method=RequestMethod.PUT, value="/{id}") // i want that particular id to change
 	public void updatePhoto(@RequestBody Foto photo, @PathVariable Long id) {
 		fotoService.updatePhoto(id, photo);
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE, value="/fotografie/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
 	public void deletePhoto(@PathVariable Long id) {
 		fotoService.deletePhoto(id);
 	}
 	
-	//new
-	@GetMapping("/foto")
+	
 	public String showForm(Model model, Foto foto) {
 		List<Funzionario> funzionari = (List<Funzionario>) funzionarioService.findAll();
-		List<Album> albums = (List<Album>) albumService.findAll();
+		List<Album> albums = (List<Album>) albumService.getAll();
 		model.addAttribute("albums", albums);
 		model.addAttribute("funzionari", funzionari);
 		return "/Foto/formFoto";

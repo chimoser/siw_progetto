@@ -33,7 +33,7 @@ public class FunzionarioController {
 		
 		if(!bindingResult.hasErrors()) {
 			this.funzionarioService.inserisci(funzionario);
-			model.addAttribute("funzionari", this.funzionarioService.tuttiFunzionari());	
+			model.addAttribute("funzionari", this.funzionarioService.findAll());	
 			return "funzionari.html";
 		}
 		else 

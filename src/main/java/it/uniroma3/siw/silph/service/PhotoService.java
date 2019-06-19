@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import it.uniroma3.siw.silph.model.Fotografia;
+import it.uniroma3.siw.silph.model.Foto;
 import it.uniroma3.siw.silph.repository.PhotoRepository;
 
 @Service
@@ -16,16 +16,16 @@ public class PhotoService {
 	private PhotoRepository photoRepository;
 
 	@Transactional
-	public Fotografia inserisci(Fotografia fotografia) {
-		return this.photoRepository.save(fotografia);
+	public void inserisci(Foto fotografia) {
+			this.photoRepository.save(fotografia);
 	}
 
 	@Transactional
-	public List<Fotografia> tutte(){
-		return (List<Fotografia>) this.photoRepository.findAll();
+	public List<Foto> tutte(){
+		return (List<Foto>) this.photoRepository.findAll();
 	}
 
-	public Fotografia photoPerId(Long id){
+	public Foto photoPerId(Long id){
 		return this.photoRepository.findById(id).get();
 	}
 
