@@ -10,6 +10,8 @@ import it.uniroma3.siw.silph.model.Fotografo;
 @Controller
 public class FotografoController {
 	
+	
+	
 	@RequestMapping(value = "/fotografo", method = RequestMethod.GET)
 	public String inserisciFotografoNelSistema(Model model) {
          model.addAttribute("fotografo",new Fotografo());

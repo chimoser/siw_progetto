@@ -8,7 +8,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import it.uniroma3.siw.silph.model.Foto;
 import it.uniroma3.siw.silph.model.Funzionario;
+import it.uniroma3.siw.silph.repository.FotoRepository;
 import it.uniroma3.siw.silph.repository.FunzionarioRepository;
 
 
@@ -17,6 +19,9 @@ public class DBPopulation implements ApplicationRunner {
 	
 	@Autowired
 	private FunzionarioRepository funzionarioRepository;
+	@Autowired
+	private FotoRepository fotoRepository;
+	
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -44,5 +49,8 @@ public class DBPopulation implements ApplicationRunner {
 		
 		Funzionario f3= new Funzionario(3L, "Leo", "fax", "leo", new BCryptPasswordEncoder().encode("leo"), "ADMIN");
 		this.funzionarioRepository.save(f3);
+		
+		Foto p1 = new Foto("foto1", "img/portfolio01.jpg");
+		this.fotoRepository.save(p1);
 	}
 }

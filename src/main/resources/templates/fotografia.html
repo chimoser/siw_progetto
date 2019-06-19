@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Riepilogo foto</title>
+    <meta charset="UTF-8"/>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link href="/css/blueNavbar.css" rel="stylesheet"/>
+    <link href="/css/infoRiepilogoStyle.css" rel="stylesheet"/>
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+</head>
+<body>
+<!--navbar-->
+<nav class="navbar navbar-inverse navbar-fixed-top nav-custom" style="background-color: #1976D2;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}">Photo Gallery</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a th:href="@{/admin/welcome}">Login Funzionario</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--container con info di riepilogo-->
+<div class="container">
+    <div class="container marketing">
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2><span class="text-muted">Riepilogo</span></h2>
+                <div class="list-group">
+                    <a class="list-group-item">Nome: <b th:text="${foto.nome}"></b></a>
+                    <a class="list-group-item">Fotografo: <b
+                            th:text="${foto.fotografo.nome + ' ' + foto.fotografo?.cognome}"></b></a>
+                    <a class="list-group-item">Album: <b th:text="${foto.album?.nome}"></b></a>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive center-block img-rounded"
+                     th:src="@{/fotografie/{id}(id=${foto.id})}" alt="img foto"/>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

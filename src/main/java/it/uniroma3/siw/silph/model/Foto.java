@@ -15,6 +15,14 @@ public class Foto {
 	private String nome;
 	private String link;
 	
+	
+	
+	public Foto(String nome, String link) {
+		super();
+		this.nome = nome;
+		this.link = link;
+	}
+
 	public String getLink() {
 		return link;
 	}

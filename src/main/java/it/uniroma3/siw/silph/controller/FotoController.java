@@ -20,14 +20,17 @@ import it.uniroma3.siw.silph.model.Foto;
 import it.uniroma3.siw.silph.model.Funzionario;
 import it.uniroma3.siw.silph.service.AlbumService;
 import it.uniroma3.siw.silph.service.FotoService;
+import it.uniroma3.siw.silph.service.FotografoService;
 import it.uniroma3.siw.silph.service.FunzionarioService;
 
 @Controller
-@RequestMapping("/foto")
+//@RequestMapping("/foto")
 public class FotoController{
 
     @Autowired
     private FotoService fotoService;
+    @Autowired
+    private FotografoService fotografoService;
     @Autowired
     private FunzionarioService funzionarioService;
     @Autowired
@@ -50,7 +53,7 @@ public class FotoController{
     }
 	*/
     
-	@RequestMapping("/{id}")
+	@GetMapping("/{id}")
 	public String getPhoto(@PathVariable Long id, Model model) {
 		if(id!=null) {
 			model.addAttribute("foto", this.fotoService.getPhotoById(id));
@@ -62,14 +65,14 @@ public class FotoController{
 		}
 	}
 	
-	
-	/*the GET method is default, now I need a POST */
-	@RequestMapping(method=RequestMethod.POST, value="/save")
-	public String addPhoto(@RequestBody Foto photo, Model model) {
-		model.addAttribute("fotografia", new Foto());
-		fotoService.addPhoto(photo);
-		return "admin/mostraFoto.html";		
+	@GetMapping(value= {"foto/mostra"})
+	public String getPhotos(Model model) {
+		model.addAttribute("fotografie", this.fotoService.getAllPhotos());
+		return "fotografie.html";
+		
 	}
+	
+	
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/{id}") // i want that particular id to change
 	public void updatePhoto(@RequestBody Foto photo, @PathVariable Long id) {
@@ -81,7 +84,7 @@ public class FotoController{
 		fotoService.deletePhoto(id);
 	}
 	
-	
+	///////
 	public String showForm(Model model, Foto foto) {
 		List<Funzionario> funzionari = (List<Funzionario>) funzionarioService.findAll();
 		List<Album> albums = (List<Album>) albumService.getAll();
@@ -92,7 +95,7 @@ public class FotoController{
 	
 	@GetMapping("/fotoList")
 	public String ListaFoto(List<Foto> fotografie){
-		return"/Foto/listaFotografie";
+		return"fotografie";
 	}
 	
 	@GetMapping("/mostraFoto")
@@ -101,8 +104,37 @@ public class FotoController{
 		model.addAttribute("foto", foto);
 		model.addAttribute("nomeAlbum",foto.getAlbum().getName());
 		
-		return "/Foto/ritornaFoto";
+		return "/admin/mostraFoto";
 	}
 	
+	/*the GET method is default, now I need a POST */
+	@RequestMapping(method=RequestMethod.POST, value="/salva")
+	public String addPhoto(@RequestBody Foto photo, Model model) {
+		//model.addAttribute("fotografia", new Foto());
+		fotoService.addPhoto(photo);
+		model.addAttribute("fotografia", photo);
+		return "admin/mostraFoto.html";		
+	}
+	
+	
+	//SILVIA
+	 @RequestMapping(value = "/inserisci")
+		public String inserisciFotografiaNelSistema(Model model) {
+			model.addAttribute("fotografi", fotografoService.getFotografi());
+	        model.addAttribute("fotografia",new Foto());
+	        return "admin/formSaveFoto";
+		}			
+	    
+	    @RequestMapping(value ="/foto/{id}", method = RequestMethod.GET)
+	    public String ritornaLaPaginaConStudenteCorrispondenteAIdS (@PathVariable ("id") Long id, Model model) {
+			if (id!=null) {
+				model.addAttribute("photo", this.fotoService.getPhotoById(id));
+				return "photo.html";
+			}
+			else {
+				model.addAttribute("photos", this.fotoService.getAllPhotos());
+				return "fotografie.html";
+			}			
+		}
 	
 }
