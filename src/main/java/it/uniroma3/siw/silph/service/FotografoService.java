@@ -19,5 +19,11 @@ public class FotografoService {
 	public List<Fotografo> tuttiFotografi(){
 		return (List<Fotografo>) fotografoRepository.findAll();
 	}
+	
+	@Transactional
+	public Fotografo fotografoPerId(Long id){
+		return fotografoRepository.findById(id).get();
+	}
+	
 
 }

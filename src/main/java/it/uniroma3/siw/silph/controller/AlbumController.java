@@ -13,7 +13,7 @@ public class AlbumController {
 	 @RequestMapping(value = "/album", method = RequestMethod.GET)
 		public String inserisciAlbumNelSistema(Model model) {
 	         model.addAttribute("album",new Album());
-	         return "albumForm";
+	         return "/admin/formSaveAlbum";
 		}	
 
 }

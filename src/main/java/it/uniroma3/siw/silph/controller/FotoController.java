@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.silph.model.Album;
 import it.uniroma3.siw.silph.model.Foto;
+import it.uniroma3.siw.silph.model.Fotografo;
 import it.uniroma3.siw.silph.model.Funzionario;
 import it.uniroma3.siw.silph.service.AlbumService;
 import it.uniroma3.siw.silph.service.FotoService;
+import it.uniroma3.siw.silph.service.FotografoService;
 import it.uniroma3.siw.silph.service.FunzionarioService;
 
 @Controller
@@ -34,6 +36,7 @@ public class FotoController{
     private AlbumService albumService;
     
     private ServletContext servletContext;
+	private FotografoService fotografoService;
 
 /*
     @RequestMapping(value="/photos/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
@@ -49,6 +52,31 @@ public class FotoController{
 
     }
 	*/
+   /*					QUESTA PARTE FUNZIONAVA
+    *  @RequestMapping(value = "/fotografia", method = RequestMethod.GET)
+	public String inserisciFotografiaNelSistema(Model model) {
+		model.addAttribute("fotografi", fotografoService.tuttiFotografi());
+         model.addAttribute("fotografia",new Foto());
+         return "fotoForm";
+	}			
+    
+    @RequestMapping(value ="/photos/{id}", method = RequestMethod.GET)
+    public String ritornaLaPaginaConStudenteCorrispondenteAIdS (@PathVariable ("id") Long id, Model model) {
+		if (id!=null) {
+			model.addAttribute("photo", this.photoService.photoPerId(id));
+			return "photo.html";
+		}
+		else {
+			model.addAttribute("photos", this.photoService.tutte());
+			return "photos.html";
+		}			
+	}*/
+    
+    @RequestMapping(value = "/save", method = RequestMethod.GET)
+	public String inserisciFotoNelSistema(Model model) {
+         model.addAttribute("foto",new Foto());
+         return "admin/formSaveFoto";
+	}	
     
 	@RequestMapping("/{id}")
 	public String getPhoto(@PathVariable Long id, Model model) {
@@ -64,8 +92,10 @@ public class FotoController{
 	
 	
 	/*the GET method is default, now I need a POST */
-	@RequestMapping(method=RequestMethod.POST, value="/save")
-	public String addPhoto(@RequestBody Foto photo, Model model) {
+	@RequestMapping(value="/save",method=RequestMethod.POST)
+	public String addPhoto(Foto photo,@RequestParam long fotografo, Model model) {
+		Fotografo f=fotografoService.fotografoPerId(fotografo);
+        photo.setFotografo(f);
 		model.addAttribute("fotografia", new Foto());
 		fotoService.addPhoto(photo);
 		return "admin/mostraFoto.html";		

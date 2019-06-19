@@ -20,14 +20,14 @@ public class MainController {
 		return "home";
 	}
 	
-	@RequestMapping(value = { "/welcome" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin/welcome" }, method = RequestMethod.GET)
     public String welcome(Model model) {
         UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String role = details.getAuthorities().iterator().next().getAuthority();
         model.addAttribute("username", details.getUsername());
         model.addAttribute("role", role);
 
-        return "welcome";
+        return "/admin/welcome";
     }
 	
 	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
