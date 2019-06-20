@@ -20,16 +20,6 @@ public class MainController {
 		return "home";
 	}
 	
-	/*@RequestMapping(value = { "/admin/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String role = details.getAuthorities().iterator().next().getAuthority();
-        model.addAttribute("username", details.getUsername());
-        model.addAttribute("role", role);
-
-        return "/admin/welcome";
-    }*/
-	
 	@RequestMapping(value = { "/admin/welcome" }, method = RequestMethod.GET)
     public String welcome(Model model) {
         UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -39,29 +29,5 @@ public class MainController {
 
         return "admin/welcome";
     }
-	
-	@RequestMapping(value="/admin")
-	public String admin(){
-		return "admin/welcome";
-	}
-	
-	@RequestMapping(value={"/login"})
-	public String login(){
-		return "login";
-	}
-	
-	@RequestMapping(value="/403")
-	public String Error403(){
-		return "error";
-	}
-	
-	/*@RequestMapping(value = { "/admin/welcome" }, method = RequestMethod.GET)
-    public String admin(Model model) {
-        UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String role = details.getAuthorities().iterator().next().getAuthority();
-        model.addAttribute("username", details.getUsername());
-        model.addAttribute("role", role);
 
-        return "/welcome";
-    }*/
 }

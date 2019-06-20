@@ -21,8 +21,28 @@ public class FotografoService {
 	}
 	
 	@Transactional
+	public void addFotografo(Fotografo fotografo) {
+		this.fotografoRepository.save(fotografo);
+
+	}
+	
+	@Transactional
 	public Fotografo fotografoPerId(Long id){
 		return fotografoRepository.findById(id).get();
+	}
+	@Transactional
+	public List<Fotografo> trovaFotografoPerNome(String nomeFotografo){
+		return this.fotografoRepository.findByNome(nomeFotografo);
+	}
+	
+	@Transactional
+	public List<Fotografo> trovaFotografoPerCognome(String cognomeFotografo){
+		return this.fotografoRepository.findByCognome(cognomeFotografo);
+	}
+	
+	@Transactional
+	public List<Fotografo> trovaFotografoPerNomeCognome(String nomeFotografo, String cognomeFotografo){
+		return this.fotografoRepository.findByNomeAndCognome(nomeFotografo, cognomeFotografo);
 	}
 	
 

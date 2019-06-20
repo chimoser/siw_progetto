@@ -12,6 +12,7 @@ public interface AlbumRepository extends CrudRepository<Album, Long>{
     Album save(Album entity);
 
     List<Album> findByFotografo(Fotografo fotografo);
-   // List<Album> findAll();
+
+	public List<Album> findByName(String nome);
 
 }

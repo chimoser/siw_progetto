@@ -36,7 +36,7 @@ public class FotoService {
 	}
 	
 	@Transactional
-	public Foto getPhotoByNome(String nome) {
+	public List<Foto> getPhotoByNome(String nome) {
 		return this.fotoRepository.findByNome(nome);
 	}
 	

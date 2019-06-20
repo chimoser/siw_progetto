@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inserimento album</title>
+<title>Ricerca</title>
 <meta name="description"
 	content="Free Bootstrap Theme by BootstrapMade.com">
 <meta name="keywords"
@@ -49,54 +49,47 @@
 		</div>
 	</div>
 
-	<!--form-->
-	<div class="container container-custom">
-		<h2 align="center">Inserimento dati album</h2>
-		<br />
-		<form action="#" th:action="@{/album}" th:object="${album}"
-			enctype="multipart/form-data" method="post">
-			<div class="row">
-				<div class="form-group col-sm-12">
-					<label class="col-sm-2 control-label">Nome:</label>
-					<div class="col-sm-8">
-						<input class="form-control" type="text" name="name"
-							th:field="*{name}" />
+
+
+	<div class="site-section" data-aos="fade">
+		<div class="container-fluid">
+
+			<div class="row justify-content-center">
+				<div class="col-md-7">
+					<div class="row mb-5">
+						<div class="col-12 ">
+							<h2 class="site-section-heading text-center">Ricerca</h2>
+						</div>
 					</div>
-					<div class="col-sm-2" th:if="${#fields.hasErrors('name')}"
-						th:errors="*{name}">Error nome</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group col-sm-12">
-					<label class="col-sm-2 control-label">Descrizione:</label>
-					<div class="col-sm-8">
-						<input class="form-control" type="text" name="descrizione"
-							th:field="*{descrizione}" />
+					<div class="site-section text-center">
+						<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7"
+							style="curson: pointer;"
+							onclick="window.location='/ricercaFoto';">
+							<h3 class="text-white h4">Ricerca foto</h3>
+						</div>
+						<br>
+						<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7"
+							style="curson: pointer;"
+							onclick="window.location='/ricercaAlbum';">
+							<h3 class="text-white h4">Ricerca album</h3>
+						</div>
+						<br>
+						<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7"
+							style="curson: pointer;"
+							onclick="window.location='/ricercaFotografo';">
+							<h3 class="text-white h4">Ricerca fotografo</h3>
+						</div>
+						<br>
+						<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7"
+							style="curson: pointer;" onclick="window.location='/home';">
+							<h3 class="text-white h4">Indietro</h3>
+						</div>
 					</div>
-					<div class="col-sm-2" th:if="${#fields.hasErrors('descrizione')}"
-						th:errors="*{descrizione}">Error nome</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="form-group col-sm-12">
-					<label class="col-sm-2 control-label">Foto:</label>
-					<div class="col-sm-8">
-						<select th:field="*{fotografie}" class="form-control"
-							name="fotografie">
-							<option th:each="foto : ${fotografie}" th:value="${foto.id}"
-								th:text="${foto.nome}"></option>
-						</select>
-					</div>
-					<div class="col-sm-2"></div>
-				</div>
-			</div>
-			<div class="row" align="center">
-				<div class="form-group col-sm-12">
-					<input class="btn btn-primary" type="submit" value="Salva album" />
-				</div>
-			</div>
-		</form>
+		</div>
 	</div>
+
 	<footer class="footer-2 text-center-xs bg--white">
 		<div class="container">
 			<!--end row-->

@@ -17,15 +17,12 @@ public class AlbumService {
 
 	@Autowired
 	private AlbumRepository albumRepository;
-	
+
 	@Transactional
 	public List<Album> getAll(){
-		/*if (this.albumRepository.findAll(). )
-			return null;
-		else */
-			return (List<Album>) this.albumRepository.findAll();
+		return (List<Album>) this.albumRepository.findAll();
 	}
-	
+
 	@Transactional
 	public Album getAlbumById(Long id) {
 		Optional<Album> a = this.albumRepository.findById(id);
@@ -34,20 +31,20 @@ public class AlbumService {
 		else
 			return null;
 	}
-	
-	
-	
+
+
+
 	@Transactional
 	public void addAlbum(Album album) {
 		this.albumRepository.save(album);
-		
+
 	}
-	
+
 	@Transactional
 	public void updateAlbum(Album album) {
 		this.albumRepository.save(album);
 	}
-	
+
 	@Transactional
 	public void deleteAlbum(Long id) {
 		this.albumRepository.deleteById(id);
@@ -56,6 +53,11 @@ public class AlbumService {
 	public List<Album> getAlbumsByPhotographer(Fotografo fotografo) {
 		return this.albumRepository.findByFotografo(fotografo);
 	}
+
+	@Transactional
+	public List<Album> trovaAlbumNome(String nome){
+		return albumRepository.findByName(nome);
+	}
 	
-	
+
 }

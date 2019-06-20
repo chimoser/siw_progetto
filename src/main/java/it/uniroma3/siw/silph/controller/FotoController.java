@@ -4,25 +4,23 @@ package it.uniroma3.siw.silph.controller;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import it.uniroma3.siw.silph.model.Album;
 import it.uniroma3.siw.silph.model.Foto;
-import it.uniroma3.siw.silph.model.Funzionario;
-import it.uniroma3.siw.silph.service.AlbumService;
+import it.uniroma3.siw.silph.model.RicercaParole;
 import it.uniroma3.siw.silph.service.FotoService;
 import it.uniroma3.siw.silph.service.FotografoService;
-import it.uniroma3.siw.silph.service.FunzionarioService;
 
 @Controller
 @RequestMapping("/foto")
@@ -32,12 +30,6 @@ public class FotoController{
 	private FotoService fotoService;
 	@Autowired
 	private FotografoService fotografoService;
-	@Autowired
-	private FunzionarioService funzionarioService;
-	@Autowired
-	private AlbumService albumService;
-
-	private ServletContext servletContext;
 
 
 	//usato da fotografie.html
@@ -80,13 +72,69 @@ public class FotoController{
 		return "admin/mostraFoto.html";		
 	}
 
-
-	//SILVIA
-	@RequestMapping(value = "/inserisci")
-	public String inserisciFotografiaNelSistema(Model model) {
+	@RequestMapping(value = "/save", method = RequestMethod.GET)
+	public String inserisciFotoNelSistema(Model model) {
 		model.addAttribute("fotografi", fotografoService.getFotografi());
-		model.addAttribute("fotografia",new Foto());
+		model.addAttribute("foto",new Foto());
 		return "admin/formSaveFoto";
-	}			
+	}
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String checkAlbumInfo(@ModelAttribute("foto") Foto foto, 
+			Model model) {
+		this.fotoService.addPhoto(foto);
+		model.addAttribute("fotografie", this.fotoService.getAllPhotos());
+		return "fotografie";
+	}
+
+	@RequestMapping(value = "/ricercaFoto")
+	public String cercaFoto() {
+		return "ricercaFoto.html";
+	}
+
+	@RequestMapping(value = "/cercaFotoPerId")
+	public String cercaFotoPerId(Model model) {
+		model.addAttribute("stringaRicerca", new RicercaParole());
+		return "ricercaFotoId.html";
+	}
+
+	@RequestMapping(value = "/cercaFotoPerNome")
+	public String cercaFotoPerNome(Model model) {
+		model.addAttribute("stringaRicerca", new RicercaParole());
+		return "ricercaFotoNome";
+	}
+
+	@RequestMapping(value = "/risultatiFotoNome", method = RequestMethod.POST)
+	public String risultatoRicercaNome(@Valid @ModelAttribute("stringaRicerca") RicercaParole stringaRicerca, Model model , BindingResult bindingResult) {
+		List<Foto> lf = this.fotoService.getPhotoByNome(stringaRicerca.getPrimaParola());
+		if(!lf.isEmpty()) {
+			model.addAttribute("risultati", lf);
+			return "listaFoto";
+		}
+		else {
+			bindingResult.rejectValue("stringa1", "wrong");
+			return "ricercaFotoNome.html";
+		}
+	}
+
+	@RequestMapping(value = "/risultatiFotoId", method = RequestMethod.POST)
+	public String risultatoRicercaId(@Valid @ModelAttribute("stringaRicerca") RicercaParole stringaRicerca, Model model , BindingResult bindingResult) {
+		Long id =0L;
+		try {
+			id = Long.parseLong(stringaRicerca.getPrimaParola());
+		}catch (NumberFormatException e) {
+			bindingResult.rejectValue("stringa1", "wrong");
+			return "ricercaFotoId.html";
+		}
+		Foto foto = this.fotoService.getPhotoById(id);
+		if(foto!=null) {
+			model.addAttribute("foto", foto);
+			return "foto";
+		}
+		else {
+			bindingResult.rejectValue("stringa1", "wrong");
+			return "ricercaFotoId.html";
+		}
+	}
 
 }
