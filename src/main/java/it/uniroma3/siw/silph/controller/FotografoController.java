@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,14 @@ public class FotografoController {
 	public String inserisciFotografoNelSistema(Model model) {
          model.addAttribute("fotografo",new Fotografo());
          return "/admin/formSaveFotografo";
+	}
+	
+	@RequestMapping(value = "/fotografo", method = RequestMethod.POST)
+	 public String checkAlbumInfo(@ModelAttribute("fotografo") Fotografo fotografo, 
+				 Model model) {
+		this.fotografoService.addFotografo(fotografo);
+		model.addAttribute("fotografi", this.fotografoService.getFotografi());
+		return "fotografi";
 	}
 	
 	 @GetMapping(value="/fotografo/mostra")

@@ -21,6 +21,12 @@ public class FotografoService {
 	}
 	
 	@Transactional
+	public void addFotografo(Fotografo fotografo) {
+		this.fotografoRepository.save(fotografo);
+
+	}
+	
+	@Transactional
 	public Fotografo fotografoPerId(Long id){
 		return fotografoRepository.findById(id).get();
 	}

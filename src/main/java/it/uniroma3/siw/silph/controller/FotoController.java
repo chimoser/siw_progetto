@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,12 +33,6 @@ public class FotoController{
 	private FotoService fotoService;
 	@Autowired
 	private FotografoService fotografoService;
-	@Autowired
-	private FunzionarioService funzionarioService;
-	@Autowired
-	private AlbumService albumService;
-
-	private ServletContext servletContext;
 
 
 	//usato da fotografie.html
@@ -86,6 +81,14 @@ public class FotoController{
 			model.addAttribute("foto",new Foto());
 	         return "admin/formSaveFoto";
 		}
+	 
+	 @RequestMapping(value = "/save", method = RequestMethod.POST)
+	 public String checkAlbumInfo(@ModelAttribute("foto") Foto foto, 
+				 Model model) {
+		 this.fotoService.addPhoto(foto);
+		 model.addAttribute("fotografie", this.fotoService.getAllPhotos());
+		 return "fotografie";
+	}
 				
 
 }
