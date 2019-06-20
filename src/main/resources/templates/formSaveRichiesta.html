@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
-    <title>Modifica foto</title>
+    <title>Acquista foto</title>
     <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
     <link href="/css/blueNavbar.css" rel="stylesheet"/>
     <link href="/css/formStyle.css" rel="stylesheet"/>
@@ -29,34 +29,26 @@
         </div>
     </div>
 </nav>
+
 <!--form-->
 <div class="container container-custom">
-    <h2 align="center">Modifica foto</h2>
+    <h2 align="center">Inserimento dati foto</h2>
     <br/>
-    <form action="#" th:action="@{/foto/update}" th:object="${foto}" enctype="multipart/form-data"
-          method="post">
+    <form action="#" th:action="@{/associaCliente}" th:object="${richiesta}" enctype="multipart/form-data"
+          method="GET">
         <div class="row">
             <div class="form-group col-sm-12">
                 <label class="col-sm-2 control-label">Nome Foto:</label>
                 <div class="col-sm-8">
-                    <input class="form-control" type="text" name="nome" th:field="*{nome}"/>
-                </div>
-                <div class="col-sm-2" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error nome</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-12">
-                <label class="col-sm-2 control-label">Fotografi:</label>
-                <div class="col-sm-8">
-                    <select th:field="*{fotografo}" class="form-control" name="fotografo">
-                        <option th:each="fotografo : ${fotografo}" th:value="${fotografo.id}"
-                                th:text="${fotografo.nome + ' ' + fotografo.cognome}"></option>
+                <select th:field="*{fotografie}" class="form-control" name="fotografie">
+                        <option th:each="foto : ${fotografie}" th:value="${foto.id}"
+                                th:text="${foto.nome}"></option>
                     </select>
                 </div>
-                <div class="col-sm-2"></div>
-            </div>
+                <!-- <div class="col-sm-2" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error nome</div>-->
+            </div> 
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="form-group col-sm-12">
                 <label class="col-sm-2 control-label">Album:</label>
                 <div class="col-sm-8">
@@ -67,20 +59,10 @@
                 </div>
                 <div class="col-sm-2"></div>
             </div>
-        </div>
-        <div class="row">
-            <input type="hidden" name="id" th:field="*{id}" th:value="${foto.id}"/>
-            <div class="form-group col-sm-12">
-                <label class="col-sm-2 control-label">Carica una immagine (400x300):</label>
-                <div class="col-sm-8">
-                    <input type="file" name="file"/>
-                </div>
-                <div class="col-sm-2" th:if="${imgNonInserita}">Mandatory field</div>
-            </div>
-        </div>
+        </div> -->
         <div class="row" align="center">
             <div class="form-group col-sm-12">
-                <input class="btn btn-primary" type="submit" value="Invia"/>
+                <input class="btn btn-primary" type="submit" value="Ordina foto"/>
             </div>
         </div>
     </form>

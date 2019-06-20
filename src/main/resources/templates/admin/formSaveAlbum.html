@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inserimento foto</title>
+<title>Inserimento album</title>
 <meta name="description"
 	content="Free Bootstrap Theme by BootstrapMade.com">
 <meta name="keywords"
@@ -17,7 +17,6 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/animate.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60" onload="myFunction()">
@@ -49,16 +48,15 @@
 			</header>
 		</div>
 	</div>
-
 	<!--form-->
 	<div class="container container-custom">
-		<h2 align="center">Inserimento dati foto</h2>
+		<h2 align="center">Inserimento dati album</h2>
 		<br />
-		<form action="#" th:action="@{/mostraFoto}" th:object="${foto}"
-			enctype="multipart/form-data" method="GET">
+		<form action="#" th:action="@{/album}" th:object="${album}"
+			enctype="multipart/form-data" method="post">
 			<div class="row">
 				<div class="form-group col-sm-12">
-					<label class="col-sm-2 control-label">Nome Foto:</label>
+					<label class="col-sm-2 control-label">Nome:</label>
 					<div class="col-sm-8">
 						<input class="form-control" type="text" name="nome"
 							th:field="*{nome}" />
@@ -69,44 +67,31 @@
 			</div>
 			<div class="row">
 				<div class="form-group col-sm-12">
-					<label class="col-sm-2 control-label">Fotografo:</label>
+					<label class="col-sm-2 control-label">Descrizione:</label>
 					<div class="col-sm-8">
-						<select th:field="*{fotografo}" class="form-control"
-							name="fotografo">
-							<option th:each="fotografo : ${fotografi}"
-								th:value="${fotografo.id}"
-								th:text="${fotografo.nome + ' ' + fotografo.cognome}"></option>
-						</select>
+						<input class="form-control" type="text" name="descrizione"
+							th:field="*{descrizione}" />
 					</div>
-					<div class="col-sm-2"></div>
+					<div class="col-sm-2" th:if="${#fields.hasErrors('descrizione')}"
+						th:errors="*{descrizione}">Error nome</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-sm-12">
-					<label class="col-sm-2 control-label">Album:</label>
+					<label class="col-sm-2 control-label">Foto:</label>
 					<div class="col-sm-8">
-						<select th:field="*{album}" class="form-control" name="album">
-							<option th:each="album : ${albums}" th:value="${album.id}"
-								th:text="${album.nome}"></option>
+						<select th:field="*{fotografie}" class="form-control"
+							name="fotografie">
+							<option th:each="foto : ${fotografie}" th:value="${foto.id}"
+								th:text="${foto.nome}"></option>
 						</select>
 					</div>
 					<div class="col-sm-2"></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group col-sm-12">
-					<label class="col-sm-2 control-label">Carica una immagine
-						(400x300):</label>
-					<div class="col-sm-8">
-						<input type="file" name="file" />
-					</div>
-					<div class="col-sm-2" th:if="${imgNonInserita}">Campo
-						obbligatorio</div>
 				</div>
 			</div>
 			<div class="row" align="center">
 				<div class="form-group col-sm-12">
-					<input class="btn btn-primary" type="submit" value="Salva foto" />
+					<input class="btn btn-primary" type="submit" value="Salva album" />
 				</div>
 			</div>
 		</form>

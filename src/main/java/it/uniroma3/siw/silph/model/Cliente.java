@@ -1,28 +1,32 @@
 package it.uniroma3.siw.silph.model;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente {
+	
 
 	@Id
-	@GeneratedValue( strategy = GenerationType.AUTO)
+	@GeneratedValue ( strategy = GenerationType.AUTO)
 	private Long id;
+	@Column(nullable = false)
 	private String nome;
+	@Column(nullable = false)
 	private String cognome;
+	@Column(nullable = false)
+	private String email;
 	
-	public Cliente () {
-		
-	}
-	public Cliente(Long id, String nome, String cognome) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.cognome = cognome;
-	}
+	@OneToMany(mappedBy = "cliente")
+	private List<Richiesta> richieste;
+
+	
 	public Long getId() {
 		return id;
 	}
@@ -41,7 +45,18 @@ public class Cliente {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
-	
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public List<Richiesta> getRichieste() {
+		return richieste;
+	}
+	public void setRichieste(List<Richiesta> richieste) {
+		this.richieste = richieste;
+	}
+
 	
 }

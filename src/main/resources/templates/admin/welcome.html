@@ -1,27 +1,3 @@
-<!-- <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Home</title>
-</head>
-
-<body>
-	<h1>
-		Benvenuto, <span th:utext="${username}"></span>
-	</h1>
-
-	<h3 th:if="${role} == 'ADMIN'">
-		<a href="/admin">Visita la pagina dell'amministratore</a>
-	</h3>
-
-	<h5>
-		<a href="/logout">Logout</a>
-	</h5>
-
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
@@ -65,9 +41,19 @@
 <div class="container-fluid bg-2 container-custom">
     <h3>Gestione foto</h3>
     <br/>
-    <a th:href="@{/foto/inserisci}" class="btn btn-info btn-md">
-        Inserisci un foto
+    <a th:href="@{/foto/save}" class="btn btn-info btn-md">
+        Inserisci una foto
     </a>
+    <div>
+    <a th:href="@{/album}" class="btn btn-info btn-md">
+        Inserisci un album
+    </a>
+    </div>
+    <div>
+    <a th:href="@{/fotografo}" class="btn btn-info btn-md">
+        Inserisci un fotografo
+    </a>
+    </div>
     <br/>
     <br/>
     <div class="table-custom">
@@ -96,11 +82,6 @@
             </tr>
         </table>
     </div>
-    	
-	<a th:href="@{/fotografia}">Aggiungi foto</a>
-	<a th:href="@{/fotografo}">Aggiungi fotografo</a>
-	<a th:href="@{/album}">Aggiungi album</a>
-    
 </div>
 </body>
 </html>

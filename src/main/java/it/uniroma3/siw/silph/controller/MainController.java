@@ -17,17 +17,17 @@ public class MainController {
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String index(Model model) {
-		return "home";
+		return "/home";
 	}
 	
-	@RequestMapping(value = { "/admin/welcome" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
         UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String role = details.getAuthorities().iterator().next().getAuthority();
         model.addAttribute("username", details.getUsername());
         model.addAttribute("role", role);
 
-        return "admin/welcome";
+        return "/admin/welcome";
     }
 	
 	/*@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)

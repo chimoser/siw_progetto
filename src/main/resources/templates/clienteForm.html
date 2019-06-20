@@ -1,29 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head>
-<meta charset="ISO-8859-1">
-<title>Inserimento dati cliente</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
 <body>
-<h4>Inserisci i tuoi dati</h4>
-<div>
-<form th:action = "@{cliente}" method="POST" th:object"${cliente}">
-<table>
-	<tr>
-		<td>Nome:</td>
-		<td><input type="text" th:field="*{nome}"/></td>
-		<td th:if = "${#fields.hasErrors('nome')}" th:errors = "*{nome}"></td>
-	</tr>
-	<tr>
-		<td>Cognome:</td>
-		<td><input type="text" th:field="*{cognome}"/></td>
-		<td th:if = "${#fields.hasErrors('cognome')}" th:errors = "*{cognome}"></td>
-	</tr>
-	<tr>
-		<td><button type ="submit">Invio</button></td>
-	</tr>
-</table>
-</form>
-</div>
+	<div>
+		<h4>Inserisci i tuoi dati</h4>
+	</div>
+
+
+	<form th:action="@{/cliente}" method="GET"
+		th:object="${cliente}">
+		<table>
+			<tr>
+
+				<td>Nome:</td>
+				<td><input type="text" th:field="*{nome}" /></td>
+				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
+			</tr>
+			<tr>
+				<td>Cognome:</td>
+				<td><input type="text" th:field="*{cognome}" /></td>
+				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" th:field="*{email}" /></td>
+				<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+			</tr>
+			<tr>
+				<td><button type="submit">Invio</button></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>

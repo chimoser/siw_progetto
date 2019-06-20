@@ -15,7 +15,7 @@ public class FotografoController {
 	@RequestMapping(value = "/fotografo", method = RequestMethod.GET)
 	public String inserisciFotografoNelSistema(Model model) {
          model.addAttribute("fotografo",new Fotografo());
-         return "fotografoForm";
+         return "/admin/formSaveFotografo";
 	}
 
 }
