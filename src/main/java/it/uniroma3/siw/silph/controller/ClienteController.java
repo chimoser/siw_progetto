@@ -67,11 +67,4 @@ public class ClienteController {
 			model.addAttribute("richiesta", this.richiestaService.richiestaPerId(id));
 			return "richiesta.html";
 	}*/
-
-
-	/*@RequestMapping("/addCliente")
-	public String addCliente (Model model) {
-		model.addAttribute("cliente", new Cliente());
-		return "clienteform.html";
-	}*/
 }
