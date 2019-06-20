@@ -10,6 +10,7 @@
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy">
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -60,11 +61,11 @@
           <div id="myGrid" class="grid-padding">
             <div class="col-md-4 col-sm-4 padding-right-zero">
             
-            	<p th:each="foto : ${photos}">
+            	<div th:each="foto : ${fotografie}">
 				<a th:href="@{'/foto' + '/' + ${foto.id}}"
 				th:text="${foto.nome}"> Nome Foto 
-				<img src="${foto.link}" class="img-responsive"></a>
-				<p>
+				<img th:src="${foto.link}" class="img-responsive"></a>
+				</div>
 				
             </div>
           </div>
@@ -73,7 +74,7 @@
     </div>
   </section>
 	
-	 <footer class="footer-2 text-center-xs bg--white">
+	<footer class="footer-2 text-center-xs bg--white">
     <div class="container">
       <!--end row-->
       <div class="row">
