@@ -17,10 +17,10 @@ public class MainController {
 
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public String index(Model model) {
-		return "home";
+		return "/home";
 	}
 	
-	@RequestMapping(value = { "/admin/welcome" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin/welcome", "/login" }, method = RequestMethod.GET)
     public String welcome(Model model) {
         UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String role = details.getAuthorities().iterator().next().getAuthority();
@@ -30,7 +30,7 @@ public class MainController {
         return "/admin/welcome";
     }
 	
-	@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
     public String admin(Model model) {
         UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String role = details.getAuthorities().iterator().next().getAuthority();
@@ -38,5 +38,5 @@ public class MainController {
         model.addAttribute("role", role);
 
         return "admin";
-    }
+    }*/
 }
