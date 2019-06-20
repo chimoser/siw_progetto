@@ -72,11 +72,11 @@ public class DBPopulation implements ApplicationRunner {
 		fotografoRepository.save(fotog1);
 		fotografoRepository.save(fotog2);
 		
-		Album a1 = new Album("Foto Cani");
+		Album a1 = new Album("Foto Cani", "https://www.terranuova.it/var/terranuova/storage/images/news/attualita/cani-ecco-come-i-cuccioli-imparano-dall-uomo/1338268-1-ita-IT/Cani-ecco-come-i-cuccioli-imparano-dall-uomo_articleimage.jpg");
 		a1.setFotografo(fotog1);
 		albumRepository.save(a1);
 		
-		Album a2 = new Album("Foto Fiori");
+		Album a2 = new Album("Foto Fiori","https://bonkaday.com/wp-content/uploads/2016/04/Fiori-colorati-2.jpg");
 		a2.setFotografo(fotog2);
 		albumRepository.save(a2);
 		
@@ -90,5 +90,16 @@ public class DBPopulation implements ApplicationRunner {
 		p2.setAlbum(a1);
 		this.fotoRepository.save(p2);
 	
+		Foto p3 = new Foto("Fiori1", "https://www.settemuse.it/sfondi_piante_fiori/fiori2/fiori2_093.jpg");
+		p3.setFotografo(fotog2);
+		p3.setAlbum(a2);
+		this.fotoRepository.save(p3);
+		
+		Foto p4 = new Foto("Fiori2", "https://wips.plug.it/cips/paginegiallecasa/cms/2018/09/piante-che-fioriscono-in-inverno.jpg");
+		p4.setFotografo(fotog2);
+		p4.setAlbum(a2);
+		this.fotoRepository.save(p4);
+		
+		
 	}
 }

@@ -87,7 +87,7 @@
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
         <h2>Fotografi</h2>
         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <p><a class="btn btn-secondary" th:href="@{/fotografo/mostra}" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
     </div>
@@ -102,24 +102,27 @@
         <div class="col-md-12">
           <div id="myGrid" class="grid-padding">
             <div class="col-md-4 col-sm-4 padding-right-zero">
-              <img src="img/portfolio01.jpg" class="img-responsive">
-              <img src="img/port01.jpg" class="img-responsive">
+              <img th:src="@{'https://www.terranuova.it/var/terranuova/storage/images/news/attualita/cani-ecco-come-i-cuccioli-imparano-dall-uomo/1338268-1-ita-IT/Cani-ecco-come-i-cuccioli-imparano-dall-uomo_articleimage.jpg'}"
+              class="img-responsive">
+              <img th:src="@{'https://bonkaday.com/wp-content/uploads/2016/04/Fiori-colorati-2.jpg'}" class="img-responsive">              
               <img src="img/port02.jpg" class="img-responsive">
               <img src="img/portfolio01.jpg" class="img-responsive">
             </div>
             <div class="col-md-4 col-sm-4 padding-right-zero">
-              <img src="img/portfolio02.jpg" class="img-responsive">
+              <img th:src="@{'https://bonkaday.com/wp-content/uploads/2016/04/Fiori-colorati-2.jpg'}" class="img-responsive">
               <img src="img/port01.jpg" class="img-responsive">
               <img src="img/port02.jpg" class="img-responsive">
-              <img src="img/portfolio01.jpg" class="img-responsive">
+             <img th:src="@{'https://www.terranuova.it/var/terranuova/storage/images/news/attualita/cani-ecco-come-i-cuccioli-imparano-dall-uomo/1338268-1-ita-IT/Cani-ecco-come-i-cuccioli-imparano-dall-uomo_articleimage.jpg'}"
+              class="img-responsive">
               <img src="img/port03.jpg" class="img-responsive">
             </div>
             <div class="col-md-4 col-sm-4 padding-right-zero">
               <img src="img/port01.jpg" class="img-responsive">
-              <img src="img/portfolio01.jpg" class="img-responsive">
+              <img th:src="@{'https://www.terranuova.it/var/terranuova/storage/images/news/attualita/cani-ecco-come-i-cuccioli-imparano-dall-uomo/1338268-1-ita-IT/Cani-ecco-come-i-cuccioli-imparano-dall-uomo_articleimage.jpg'}"
+              class="img-responsive">
               <img src="img/portfolio02.jpg" class="img-responsive">
               <img src="img/port03.jpg" class="img-responsive">
-              <img src="img/portfolio02.jpg" class="img-responsive">
+              <img th:src="@{'https://bonkaday.com/wp-content/uploads/2016/04/Fiori-colorati-2.jpg'}" class="img-responsive">
               <img src="img/port02.jpg" class="img-responsive">
             </div>
           </div>

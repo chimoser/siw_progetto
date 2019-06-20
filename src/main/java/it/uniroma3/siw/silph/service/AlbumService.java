@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.silph.model.Album;
+import it.uniroma3.siw.silph.model.Fotografo;
 import it.uniroma3.siw.silph.repository.AlbumRepository;
 
 @Service
@@ -50,6 +51,10 @@ public class AlbumService {
 	@Transactional
 	public void deleteAlbum(Long id) {
 		this.albumRepository.deleteById(id);
+	}
+
+	public List<Album> getAlbumsByPhotographer(Fotografo fotografo) {
+		return this.albumRepository.findByFotografo(fotografo);
 	}
 	
 	

@@ -34,7 +34,6 @@
                 <li class="active"><a th:href="@{/}">Home</a></li>
                 <li><a th:href="@{/#about}">Sections</a></li>
                 <li><a th:href="@{/#portfolio}">Portfolio</a></li>
-                <li><a th:href="@{/#contact}">Contact Us</a></li>
                 <li><a th:href="@{/admin/welcome}">Login</a></li>
               </ul>
             </div>
@@ -47,26 +46,23 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2 class="title text-center">This is <span class="deco">the album</span> you selected</h2>
+          <h2 class="title text-center">This is <span class="deco">the photographer</span> you selected</h2>
         </div>
         <div class="col-md-12">
           <div>
                 <div class="list-group">
-                    <a class="list-group-item">Nome: <b th:text="${album.name}"></b></a>
-                    <a class="list-group-item">Fotografo: <b
-                            th:text="${album.fotografo?.nome + ' ' + album.fotografo?.cognome}"></b></a>
+                    <a class="list-group-item">Nome: <b th:text="${fotografo.nome}"></b></a>
                      <div class="col-md-12">
           <div id="myGrid" class="grid-padding">
             <div class="col-md-4 col-sm-4 padding-right-zero">
             
-            	<div th:each="foto : ${fotografie}">
+            	<div th:each="album : ${albums}">
             	<div class="service-box">
-							<img th:src="@{${foto.link}}" alt="Foto"
+							<img th:src="@{${album.cover}}" alt="Album"
 								style="height: 220px; width: 220px" />
-							<div>
-								<a th:text="${foto.nome}"
-									th:href="@{'/foto' + '/' + ${foto.id}}"></a>
-							</div>
+								<div><a th:text="${album.name}"
+									th:href="@{'/album' + '/' + ${album.id}}"></a>
+								</div>
 				</div>
             </div>
 				 

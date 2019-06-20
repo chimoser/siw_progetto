@@ -51,10 +51,10 @@
 						<div class="service-box">
 							<img th:src="@{${foto.link}}" alt="Foto"
 								style="height: 220px; width: 220px" />
-							<h2>
+							<div>
 								<a th:text="${foto.nome}"
 									th:href="@{'/foto' + '/' + ${foto.id}}"></a>
-							</h2>
+							</div>
 						</div>
 					</li>
 				</th:foreach>

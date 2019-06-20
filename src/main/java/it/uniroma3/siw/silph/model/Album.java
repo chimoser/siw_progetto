@@ -18,6 +18,7 @@ public class Album {
 	private Long id;
 	private String name;
 	private String descrizione;
+	private String cover;
 	
 	@ManyToOne
 	private Fotografo fotografo;
@@ -28,9 +29,10 @@ public class Album {
 		
 	}
 	
-	public Album(String name) {
+	public Album(String name,String cover) {
 		super();
 		this.name = name;	
+		this.cover=cover;
 	}
 	
 	public Album(Long id, String name, String description) {
@@ -38,6 +40,7 @@ public class Album {
 		this.id = id;
 		this.name = name;
 		this.descrizione = description;
+		
 		this.fotografie = new LinkedList<Foto>();
 	}
 	
@@ -75,6 +78,14 @@ public class Album {
 
 	public void setFotografie(List<Foto> fotografie) {
 		this.fotografie = fotografie;
+	}
+
+	public String getCover() {
+		return cover;
+	}
+
+	public void setCover(String cover) {
+		this.cover = cover;
 	}
 	
 	
