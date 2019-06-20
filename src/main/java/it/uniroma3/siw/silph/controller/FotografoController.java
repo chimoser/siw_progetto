@@ -31,7 +31,7 @@ public class FotografoController {
          return "/admin/formSaveFotografo";
 	}
 	
-	@RequestMapping(value = "/fotografo", method = RequestMethod.POST)
+	@RequestMapping(value = "/fotografocheck", method = RequestMethod.POST)
 	 public String checkAlbumInfo(@ModelAttribute("fotografo") Fotografo fotografo, 
 				 Model model) {
 		this.fotografoService.addFotografo(fotografo);
@@ -115,7 +115,7 @@ public class FotografoController {
 
 		}
 
-		@RequestMapping(value="/fotografo/{id}", method=RequestMethod.GET)
+		/*@RequestMapping(value="/fotografo/{id}", method=RequestMethod.GET)
 		public String fotografo(@PathVariable("id") Long id, Model model) {
 			Fotografo fotografo = this.fotografoService.fotografoPerId(id);
 			if ( fotografo == null) {
@@ -124,5 +124,5 @@ public class FotografoController {
 				model.addAttribute("fotografo", fotografo);
 				return "fotografo.html";
 			}
-		}
+		}*/
 }
