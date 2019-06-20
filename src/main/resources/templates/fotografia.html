@@ -34,7 +34,7 @@
                 <li class="active"><a th:href="@{/}">Home</a></li>
                 <li><a th:href="@{/#about}">Sections</a></li>
                 <li><a th:href="@{/#portfolio}">Portfolio</a></li>
-                <li><a th:href="@{/#contact}">Contact Us</a></li>
+                <li><a th:href="@{/carrello}">Cart</a></li>
                 <li><a th:href="@{/admin/welcome}">Login</a></li>
               </ul>
             </div>
@@ -60,6 +60,7 @@
                     <a class="list-group-item">Album: <b th:text="${foto.album?.name}"></b></a>
                     <div class="col-md-5">
                      <img th:src="@{${foto.link}}" alt="Foto" />
+                     <a th:href="@{'/carrello/' + ${foto.id}}" >Add to shopping chart</a>
 				
             </div>
              </div>
