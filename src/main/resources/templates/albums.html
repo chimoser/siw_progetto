@@ -56,7 +56,8 @@
             
             	<div th:each="album : ${albums}">
 	            	<div class="service-box">
-								<img src="img/portfolio01.jpg" class="img-responsive"
+								<img src="https://www.terranuova.it/var/terranuova/storage/images/news/attualita/cani-ecco-come-i-cuccioli-imparano-dall-uomo/1338268-1-ita-IT/Cani-ecco-come-i-cuccioli-imparano-dall-uomo_articleimage.jpg" 
+								class="img-responsive"
 									style="height: 220px; width: 220px" />
 								<a th:href="@{'/album' + '/' + ${album.id}}"
 									th:text="${album.name}"> Nome </a>

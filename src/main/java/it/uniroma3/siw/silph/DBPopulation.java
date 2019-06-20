@@ -60,16 +60,21 @@ public class DBPopulation implements ApplicationRunner {
 		this.funzionarioRepository.save(f3);
 		
 		
-		Album a1 = new Album("Foto Cani");
+	/*	Album a1 = new Album("Foto Cani");
 		albumRepository.save(a1);
 		List<Album> lista1  = new ArrayList<Album>();
 		lista1.add(a1);
-		
+		a1.setFotografo(fotog1);
+		*/
 		Fotografo fotog1 = new Fotografo("Gigi","Viola");
 		Fotografo fotog2 = new Fotografo("Luca","Biuan");
-		fotog2.setAlbum(lista1);
+		//fotog2.setAlbum(lista1);
 		fotografoRepository.save(fotog1);
 		fotografoRepository.save(fotog2);
+		
+		Album a1 = new Album("Foto Cani");
+		albumRepository.save(a1);
+		a1.setFotografo(fotog1);
 		
 		Foto p1 = new Foto("foto1", "https://arcaplanet-static.kxscdn.com/negozi/wp-content/uploads/2019/01/cimurro-cucciolo.jpg");
 		p1.setFotografo(fotog1);
