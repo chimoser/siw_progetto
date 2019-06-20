@@ -18,29 +18,28 @@
   
 </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="myFunction()">
-  <div class="header">
-    <div class="bg-color">
-      <header id="main-header">
-        <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#lauraMenu">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Photo Gallery</a>
-            </div>
-            <div class="collapse navbar-collapse" id="lauraMenu">
-              <ul class="nav navbar-nav navbar-right navbar-border">
-                <li class="active"><a href="#main-header">Home</a></li>
-                <li><a href="#about">Sections</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-                <li><a th:href="@{/admin/welcome}">Login</a></li>
-                <li><a th:href="@{/richiestaForm}">Acquista foto</a></li>
-              </ul>
+<body id="myPage" data-spy="scroll" data-target=".navbar"
+	data-offset="60" onload="myFunction()">
+	<div class="header">
+		<div class="bg-color">
+			<header id="main-header">
+				<nav class="navbar navbar-default navbar-fixed-top">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target="#lauraMenu">
+								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" th:href="@{/}">Photo Gallery</a>
+						</div>
+						<div class="collapse navbar-collapse" id="lauraMenu">
+							<ul class="nav navbar-nav navbar-right navbar-border">
+								<li class="active"><a th:href="@{/}">Home</a></li>
+								<li><a th:href="@{/#about}">Sections</a></li>
+								<li><a th:href="@{/#portfolio}">Portfolio</a></li>
+								<li><a th:href="@{/logout}">Logout</a></li>
+							</ul>
             </div>
           </div>
         </nav>
