@@ -80,13 +80,12 @@ public class FotoController{
 		return "admin/mostraFoto.html";		
 	}
 
-
-	//SILVIA
-	@RequestMapping(value = "/inserisci")
-	public String inserisciFotografiaNelSistema(Model model) {
-		model.addAttribute("fotografi", fotografoService.getFotografi());
-		model.addAttribute("fotografia",new Foto());
-		return "admin/formSaveFoto";
-	}			
+	 @RequestMapping(value = "/save", method = RequestMethod.GET)
+		public String inserisciFotoNelSistema(Model model) {
+			model.addAttribute("fotografi", fotografoService.getFotografi());
+			model.addAttribute("foto",new Foto());
+	         return "admin/formSaveFoto";
+		}
+				
 
 }

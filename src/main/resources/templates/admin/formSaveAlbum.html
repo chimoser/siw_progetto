@@ -48,6 +48,7 @@
 			</header>
 		</div>
 	</div>
+
 	<!--form-->
 	<div class="container container-custom">
 		<h2 align="center">Inserimento dati album</h2>
@@ -58,11 +59,11 @@
 				<div class="form-group col-sm-12">
 					<label class="col-sm-2 control-label">Nome:</label>
 					<div class="col-sm-8">
-						<input class="form-control" type="text" name="nome"
-							th:field="*{nome}" />
+						<input class="form-control" type="text" name="name"
+							th:field="*{name}" />
 					</div>
-					<div class="col-sm-2" th:if="${#fields.hasErrors('nome')}"
-						th:errors="*{nome}">Error nome</div>
+					<div class="col-sm-2" th:if="${#fields.hasErrors('name')}"
+						th:errors="*{name}">Error nome</div>
 				</div>
 			</div>
 			<div class="row">
@@ -96,5 +97,57 @@
 			</div>
 		</form>
 	</div>
+	<footer class="footer-2 text-center-xs bg--white">
+		<div class="container">
+			<!--end row-->
+			<div class="row">
+				<div class="col-md-6">
+					<div class="footer">
+						© Copyright Laura Theme. All Rights Reserved
+						<div class="credits">
+							<!--
+                All the links in the footer should remain intact. 
+                You can delete the links only if you purchased the pro version.
+                Licensing information: https://bootstrapmade.com/license/
+                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Laura
+              -->
+							Designed by <a href="https://bootstrapmade.com/">BootstrapMade.com</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 text-right">
+					<ul class="social-list">
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+						<li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+					</ul>
+				</div>
+
+			</div>
+			<!--end row-->
+		</div>
+	</footer>
+
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.easing.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.bxslider.min.js"></script>
+	<script src="../js/wow.js"></script>
+	<script src="../js/custom.js"></script>
+	<script src="../contactform/contactform.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+
 </body>
 </html>
