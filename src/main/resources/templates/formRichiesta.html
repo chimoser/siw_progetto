@@ -39,6 +39,7 @@
 						<li class="active"><a th:href="@{/}">Home</a></li>
 						<li><a th:href="@{/#about}">Sections</a></li>
 						<li><a th:href="@{/#portfolio}">Portfolio</a></li>
+						<li><a th:href="@{/carrello}">Cart</a></li>
 						<li><a th:href="@{/admin/welcome}">Login</a></li>
 					</ul>
 				</div>
@@ -47,39 +48,37 @@
 
 	</header>
 
-
-	<section id="carrello" class="section-padding wow fadeInUp delay-05s">
+	<section id="portfolio" class="section-padding wow fadeInUp delay-05s">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<h2 class="title text-center">
-						This is your <span class="deco">shopping </span> cart
+						Fill in <span class="deco">the request</span> and get your photos
 					</h2>
 				</div>
 				<div class="col-md-12">
-					<div id="myGrid" class="grid-padding">
-						<div class="col-md-4 col-sm-4 padding-right-zero">
-
-							<div th:each="fotografia : ${carrello.foto}">
-								<div class="service-box">
-									<img th:src="@{${fotografia.link}}" alt="fotografia"
-										style="height: 220px; width: 220px" /> <a
-										th:text="${fotografia.nome}"> Nome </a> <a
-										th:href="@{'/rimuoviCarrello/'+ ${fotografia.id}}">Remove</a>
-								</div>
-								<h2>
-									<a th:href="@{/richiesta}">Submit
-										request</a>
-								</h2>
+					<div>
+						<form th:action="@{/inserisciRichiesta}" method="POST"
+							th:object="${richiesta}">
+							<label class="text-black text-center" style="width: 100%"
+								for="nome">Email</label>
+							<div class="row justify-content-center">
+								<input style="max-width: 50%; min-width: 300px;" type="text"
+									id="nome" th:field="*{email}" class="form-control">
 							</div>
-						</div>
+							<p style="text-align: center;" class="error"
+								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+								<div class="title text-center">
+								<input type="submit" value="Submit">
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
 	</section>
+
 	<footer class="footer-2 text-center-xs bg--white">
 		<div class="container">
 			<!--end row-->
@@ -133,5 +132,3 @@
 		crossorigin="anonymous"></script>
 
 </body>
-
-</html>

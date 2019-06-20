@@ -25,8 +25,14 @@ public class RichiestaService {
 		return (List<Richiesta>) this.richiestaRepository.findAll();
 	}
 
+	@Transactional
 	public Richiesta richiestaPerId(Long id){
 		return this.richiestaRepository.findById(id).get();
+	}
+
+	@Transactional
+	public void rimuoviRichiesta(Richiesta richiesta) {
+		this.richiestaRepository.delete(richiesta);		
 	}
 
 

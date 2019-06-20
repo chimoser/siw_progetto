@@ -1,13 +1,12 @@
 package it.uniroma3.siw.silph.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Richiesta {
@@ -16,11 +15,10 @@ public class Richiesta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@ManyToOne
-	private Cliente cliente;
+	private String email;
 	
 	@ManyToMany
-	private List<Foto> fotografie;
+	private Set<Foto> fotografie;
 	
 	public Richiesta() {
 	}
@@ -33,19 +31,20 @@ public class Richiesta {
 		this.id = id;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public List<Foto> getFotografie() {
+	public Set<Foto> getFotografie() {
 		return fotografie;
 	}
 
-	public void setFotografie(List<Foto> fotografie) {
+	public void setFotografie(Set<Foto> fotografie) {
 		this.fotografie = fotografie;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

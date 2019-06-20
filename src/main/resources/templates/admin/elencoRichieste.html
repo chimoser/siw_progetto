@@ -47,36 +47,37 @@
 
 	</header>
 
-
-	<section id="carrello" class="section-padding wow fadeInUp delay-05s">
+	<section id="richieste" class="section-padding wow fadeInUp delay-05s">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<h2 class="title text-center">
-						This is your <span class="deco">shopping </span> cart
+						These are <span class="deco">the current</span> request
 					</h2>
 				</div>
 				<div class="col-md-12">
 					<div id="myGrid" class="grid-padding">
 						<div class="col-md-4 col-sm-4 padding-right-zero">
 
-							<div th:each="fotografia : ${carrello.foto}">
-								<div class="service-box">
-									<img th:src="@{${fotografia.link}}" alt="fotografia"
-										style="height: 220px; width: 220px" /> <a
-										th:text="${fotografia.nome}"> Nome </a> <a
-										th:href="@{'/rimuoviCarrello/'+ ${fotografia.id}}">Remove</a>
+							<div class="service-box">
+								<h3 th:text="'ID: ' + ${richiesta.id}">ID: x</h3>
+								<br> <span>Email:</span>
+								<p th:text="${richiesta.email}">email inserita</p>
+								<span>Selected photos:</span><br> <span
+									th:each="fotografia : ${richiesta.fotografie}"
+									th:text="${fotografia.if} + ${fotografia.nome} + ' '"></span> <a
+									th:href="@{'/rimuoviRichiesta/'+${richiesta.id}}"> </a>
+								<div>
+									<button type="button">Rimuovi richiesta</button>
 								</div>
-								<h2>
-									<a th:href="@{/richiesta}">Submit
-										request</a>
-								</h2>
 							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 
 
 	</section>
