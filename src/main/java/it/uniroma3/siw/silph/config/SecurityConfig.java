@@ -32,23 +32,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-<<<<<<< .merge_file_a10516
+		/*http
 		.authorizeRequests().antMatchers(HttpMethod.GET, "/").permitAll()
 		.antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority("ADMIN")
 		.anyRequest().permitAll()
-=======
-		.authorizeRequests().antMatchers(HttpMethod.GET, "/", "/index","/richiestaForm","/associaCliente",
-				"/clienteForm", "/error","cliente").permitAll()
-		.antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ADMIN")
-		.anyRequest().authenticated()
->>>>>>> .merge_file_a04864
 		.and().formLogin()
-		.defaultSuccessUrl("/welcome")
+		.defaultSuccessUrl("/admin/welcome")
 		.and().logout()
 		.logoutUrl("/logout")
-		.logoutSuccessUrl("/");
-
+		.logoutSuccessUrl("/");*/
+		http///.requiresChannel()
+	     // .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+	      //.requiresSecure()
+	     //.and()
+		.authorizeRequests()
+		.antMatchers("/admin").hasAnyAuthority("ADMIN")
+		.antMatchers("/admin/welcome").hasAnyAuthority("ADMIN")
+		.antMatchers("/admin/mostraFotografo").hasAnyAuthority("ADMIN")
+		.antMatchers("/admin/formSaveFotografo").hasAnyAuthority("ADMIN")
+		.antMatchers("/admin/formSaveFoto").hasAnyAuthority("ADMIN")
+		.antMatchers("/admin/formSaveAlbum").hasAnyAuthority("ADMIN")
+		.antMatchers("/admin/mostraAlbum").hasAnyAuthority("ADMIN")
+		.anyRequest().permitAll()
+		.and().logout()
+		.and().formLogin()
+		.defaultSuccessUrl("/admin/welcome")
+		.and().logout()
+		.logoutSuccessUrl("/")
+		.permitAll();
 	}
 	
 	@Override

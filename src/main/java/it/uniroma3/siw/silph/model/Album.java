@@ -16,7 +16,7 @@ public class Album {
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long id;
-	private String nome;
+	private String name;
 	private String descrizione;
 	
 	@ManyToOne
@@ -36,7 +36,7 @@ public class Album {
 	public Album(Long id, String name, String description) {
 		super();
 		this.id = id;
-		this.nome = name;
+		this.name = name;
 		this.descrizione = description;
 		this.fotografie = new LinkedList<Foto>();
 	}
@@ -48,11 +48,11 @@ public class Album {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
-	public void setNome(String name) {
-		this.nome = name;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getDescrizione() {
 		return descrizione;
