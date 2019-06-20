@@ -53,7 +53,7 @@ public class FotoController{
     }
 	*/
     
-	@GetMapping("/{id}")
+	@GetMapping("foto/{id}")
 	public String getPhoto(@PathVariable Long id, Model model) {
 		if(id!=null) {
 			model.addAttribute("foto", this.fotoService.getPhotoById(id));
@@ -125,7 +125,7 @@ public class FotoController{
 	        return "admin/formSaveFoto";
 		}			
 	    
-	    @RequestMapping(value ="/foto/{id}", method = RequestMethod.GET)
+	  /*  @RequestMapping(value ="/foto/{id}", method = RequestMethod.GET)
 	    public String ritornaLaPaginaConStudenteCorrispondenteAIdS (@PathVariable ("id") Long id, Model model) {
 			if (id!=null) {
 				model.addAttribute("photo", this.fotoService.getPhotoById(id));
@@ -136,5 +136,5 @@ public class FotoController{
 				return "fotografie.html";
 			}			
 		}
-	
+	*/
 }
