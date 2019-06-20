@@ -30,7 +30,7 @@ public class Album {
 	
 	public Album(String name) {
 		super();
-		this.name = name;	
+		this.nome = name;	
 	}
 	
 	public Album(Long id, String name, String description) {
