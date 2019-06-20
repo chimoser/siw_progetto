@@ -10,6 +10,6 @@ public interface AlbumRepository extends CrudRepository<Album, Long>{
 
     Album save(Album entity);
 
-    List<Album> findAll();
+   // List<Album> findAll();
 
 }

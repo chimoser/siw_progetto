@@ -57,8 +57,7 @@ public class FotoController{
 	public String getPhotos(Model model) {
 		model.addAttribute("fotografie", this.fotoService.getAllPhotos());
 		return "fotografie.html";
-	}
-	
+	}	
 	
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/{id}") // i want that particular id to change

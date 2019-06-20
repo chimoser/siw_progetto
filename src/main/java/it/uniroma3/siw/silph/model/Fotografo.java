@@ -27,7 +27,13 @@ public class Fotografo {
 	public Fotografo() {
 		
 	}
-	
+	public Fotografo(String nome, String cognome) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.fotografie = new ArrayList<Foto>();
+	}
+
 	public Fotografo(Long id, String nome, String cognome) {
 		super();
 		this.id = id;

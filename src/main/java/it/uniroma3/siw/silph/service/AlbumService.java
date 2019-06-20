@@ -1,11 +1,11 @@
 package it.uniroma3.siw.silph.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.silph.model.Album;
@@ -14,13 +14,15 @@ import it.uniroma3.siw.silph.repository.AlbumRepository;
 @Service
 public class AlbumService {
 
+	@Autowired
 	private AlbumRepository albumRepository;
 	
 	@Transactional
 	public List<Album> getAll(){
-		List<Album> albums = new ArrayList<>();
-		albumRepository.findAll().forEach(albums::add);
-		return albums;
+		/*if (this.albumRepository.findAll(). )
+			return null;
+		else */
+			return (List<Album>) this.albumRepository.findAll();
 	}
 	
 	@Transactional

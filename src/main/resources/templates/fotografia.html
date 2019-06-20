@@ -8,19 +8,16 @@
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/animate.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/animate.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
 
   
 </head>
 <body id="photosPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="myFunction()">
-  <div class="header">
-    <div class="bg-color">
       <header id="main-header">
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container">
@@ -43,11 +40,9 @@
             </div>
           </div>
         </nav>
+        
       </header>
-	  <div>
-	 </div>
-    </div>
-   </div>
+      
 	
 	
 	<section id="portfolio" class="section-padding wow fadeInUp delay-05s">
@@ -62,11 +57,9 @@
                     <a class="list-group-item">Nome: <b th:text="${foto.nome}"></b></a>
                     <a class="list-group-item">Fotografo: <b
                             th:text="${foto.fotografo?.nome + ' ' + foto.fotografo?.cognome}"></b></a>
-                    <a class="list-group-item">Album: <b th:text="${foto.album?.nome}"></b></a>
+                    <a class="list-group-item">Album: <b th:text="${foto.album?.name}"></b></a>
                     <div class="col-md-5">
-                	<img class="featurette-image img-responsive center-block img-rounded"
-                     src="${foto.link}" alt="img foto"/>
-                      <img src="img/portfolio01.jpg" class="img-responsive">
+                     <img th:src="@{${foto.link}}" alt="Foto" />
 				
             </div>
              </div>
@@ -116,13 +109,13 @@
     </div>
   </footer>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery.easing.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.bxslider.min.js"></script>
-  <script src="js/wow.js"></script>
-  <script src="js/custom.js"></script>
-  <script src="contactform/contactform.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery.easing.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/jquery.bxslider.min.js"></script>
+  <script src="../js/wow.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="../contactform/contactform.js"></script>
   
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
