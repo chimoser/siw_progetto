@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="funzionari")
+@Table(name="users")
 public class Funzionario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)

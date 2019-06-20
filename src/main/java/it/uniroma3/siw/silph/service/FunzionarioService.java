@@ -17,14 +17,19 @@ public class FunzionarioService {
 	@Autowired
 	private FunzionarioRepository funzionarioRepository;
 	
-	@Autowired
-	private  BCryptPasswordEncoder encoder;
+	/*@Autowired
+	private  BCryptPasswordEncoder encoder;*/
 
-	@Transactional
+	/*@Transactional
 	public Funzionario inserisci(Funzionario funzionario) {
 		funzionario.setPassword(encoder.encode(funzionario.getPassword()));
 		return funzionarioRepository.save(funzionario);
-	}
+	}*/
+	
+	@Transactional
+    public void add(final Funzionario user) {
+        this.funzionarioRepository.save(user);
+    }
 	
 	@Transactional
 	public List<Funzionario> findAll(){

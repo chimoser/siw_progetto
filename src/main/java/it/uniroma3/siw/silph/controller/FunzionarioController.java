@@ -32,7 +32,7 @@ public class FunzionarioController {
 		this.funzionarioValidator.validate(funzionario, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
-			this.funzionarioService.inserisci(funzionario);
+			this.funzionarioService.add(funzionario);
 			model.addAttribute("funzionari", this.funzionarioService.findAll());	
 			return "funzionari.html";
 		}

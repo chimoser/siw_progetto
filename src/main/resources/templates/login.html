@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login form</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link href="/css/blueNavbar.css" rel="stylesheet"/>
+    <link href="/css/loginStyle.css" rel="stylesheet"/>
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+</head>
+<body>
+<!--navbar-->
+<nav class="navbar navbar-inverse navbar-fixed-top nav-custom" style="background-color: #1976D2;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}">Art Gallery</a>
+        </div>
+    </div>
+</nav>
+<!--Titolo e messaggi di info-->
+<div class="container">
+    <h2 align="center">Login</h2>
+    <div align="center" th:if="${param.error}">
+        Invalid username or password
+    </div>
+    <div align="center" th:if="${param.logout}">
+        You have been logged out
+    </div>
+</div>
+<!--Form-->
+<div class="form" >
+    <div class="thumbnail"><img src="http://s.apptoko.com/a//uploads/thumbnails/022015/kk-contacts-lollipop-contact_icon.png"/></div>
+    <form class="login-form" th:action="@{/admin/login}" method="post">
+        <input type="text" name="username" placeholder="username"/>
+        <input type="password" placeholder="password" name="password"/>
+        <button type="submit" value="Sign In">Login</button>
+    </form>
+</div>
+</body>
+</html>
+

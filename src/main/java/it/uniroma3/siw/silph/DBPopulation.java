@@ -52,7 +52,7 @@ public class DBPopulation implements ApplicationRunner {
 		this.funzionarioRepository.save(f1);
 
 		Funzionario f2 = new Funzionario(2L,"Chiara", "Moser", "chiaramoser", null, "ADMIN");
-		String f2Password = new BCryptPasswordEncoder().encode("chimospass");
+		String f2Password = new BCryptPasswordEncoder().encode("chipass");
 	    f2.setPassword(f2Password);
 		this.funzionarioRepository.save(f2);
 		
