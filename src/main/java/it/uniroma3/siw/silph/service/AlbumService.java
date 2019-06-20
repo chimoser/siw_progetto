@@ -54,5 +54,10 @@ public class AlbumService {
 		return this.albumRepository.findByFotografo(fotografo);
 	}
 
+	@Transactional
+	public List<Album> trovaAlbumNome(String nome){
+		return albumRepository.findByName(nome);
+	}
+	
 
 }

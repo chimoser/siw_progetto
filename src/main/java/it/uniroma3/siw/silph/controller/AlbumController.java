@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.silph.model.Album;
-import it.uniroma3.siw.silph.model.Foto;
-import it.uniroma3.siw.silph.model.Fotografo;
+import it.uniroma3.siw.silph.model.RicercaParole;
 import it.uniroma3.siw.silph.service.AlbumService;
 import it.uniroma3.siw.silph.service.FotoService;
 
@@ -57,4 +56,60 @@ public class AlbumController {
 		 model.addAttribute("fotografie", this.fotoService.getPhotosByAlbum(this.albumService.getAlbumById(id)));
 		 return "album.html";
 	 }
+	 
+	 @RequestMapping(value = "/ricercaAlbum")
+		public String ricercaAlbum() {
+			return "ricercaAlbum.html";
+		}
+		
+		@RequestMapping(value = "/cercaAlbumPerNome")
+		public String ricercaAlbumPerNome(Model model) {
+			model.addAttribute("stringaRicerca", new RicercaParole());
+			return "ricercaAlbumNome";
+		}
+		
+		@RequestMapping(value = "/cercaAlbumPerId")
+		public String ricercaAlbumPerId(Model model) {
+			model.addAttribute("stringaRicerca", new RicercaParole());
+			return "ricercaAlbumId";
+		}
+		
+		@RequestMapping(value = "/risultatiAlbumId", method = RequestMethod.POST)
+		public String risultatoRicercaPerId(@Valid @ModelAttribute("stringaRicerca") RicercaParole stringaRicerca,Model model, BindingResult bd) {
+			
+			Long id = 0L;
+			
+			try {
+				id = Long.parseLong(stringaRicerca.getPrimaParola());
+			}catch (NumberFormatException e) {
+				bd.rejectValue("stringa1", "wrong");
+				return "ricercaAlbumId.html";
+			}
+			
+			Album album = this.albumService.getAlbumById(id);
+			
+			if(album!=null) {
+				model.addAttribute("album", album);
+				return "album.html";
+			}
+			else {
+				bd.rejectValue("stringa1", "wrong");
+				return "ricercaAlbumId.html";
+			}
+		}
+		
+		@RequestMapping(value = "/risultatiAlbumNome", method = RequestMethod.POST)
+		public String risultatoRicercaNome(@Valid @ModelAttribute("stringaRicerca") RicercaParole stringaRicerca, Model model, BindingResult bd) {
+			
+			List<Album> albums = this.albumService.trovaAlbumNome(stringaRicerca.getPrimaParola());
+			if(!albums.isEmpty()) {
+				model.addAttribute("risultati", albums);
+				return "listaAlbum.html"; 
+			}
+			else {
+				bd.rejectValue("stringa1", "wrong");
+				return "ricercaAlbumNome.html";
+			}
+		}
+		
 }

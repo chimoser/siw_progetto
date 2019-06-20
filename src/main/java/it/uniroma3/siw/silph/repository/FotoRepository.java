@@ -11,7 +11,7 @@ import it.uniroma3.siw.silph.model.Fotografo;
 
 public interface FotoRepository extends CrudRepository<Foto, Long>  {
 
-	public Foto findByNome(String nome);
+	public List<Foto> findByNome(String nome);
 	
 	Foto save(Foto entity);
 
