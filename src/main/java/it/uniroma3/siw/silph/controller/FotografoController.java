@@ -39,18 +39,18 @@ public class FotografoController {
 		return "fotografi";
 	}
 	
-	 @GetMapping(value="/fotografo/mostra")
+	 /*@GetMapping(value="/fotografo/mostra")
 	 public String getAlbums(Model model) {
 		 model.addAttribute("fotografi", this.fotografoService.getFotografi());
 		 return "fotografi.html";
-	 }
+	 }*/
 	 
-	 @GetMapping(value="/fotografo/{id}")
+	 /*@GetMapping(value="/fotografo/{id}")
 	 public String getAlbum(@PathVariable("id")Long id,Model model) {
 		 model.addAttribute("fotografo", this.fotografoService.fotografoPerId(id));
 		 model.addAttribute("albums", this.albumService.getAlbumsByPhotographer(this.fotografoService.fotografoPerId(id)));
 		 return "fotografo.html";
-	 }
+	 }*/
 	 
 	 @RequestMapping(value="/cercaFotografoNomeCognome")
 		public String cercaFotografoNomeCognome(Model model) {
@@ -85,7 +85,7 @@ public class FotografoController {
 				return "ricercaFotografoNomeCognome.html";
 			}else {
 				model.addAttribute("risultati", risultati);
-				return "listaFotografi.html";
+				return "fotografi.html";
 			}
 		}
 		@RequestMapping(value="/risultatiFotografoId", method = RequestMethod.POST)
@@ -111,7 +111,7 @@ public class FotografoController {
 		@RequestMapping(value="/fotografi")
 		public String fotografi(Model model) {
 			model.addAttribute("risultati", this.fotografoService.getFotografi());
-			return "listaFotografi.html";
+			return "fotografi.html";
 
 		}
 

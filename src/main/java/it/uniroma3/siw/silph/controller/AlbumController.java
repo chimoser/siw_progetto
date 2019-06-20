@@ -104,7 +104,7 @@ public class AlbumController {
 			List<Album> albums = this.albumService.trovaAlbumNome(stringaRicerca.getPrimaParola());
 			if(!albums.isEmpty()) {
 				model.addAttribute("risultati", albums);
-				return "listaAlbum.html"; 
+				return "albums.html"; 
 			}
 			else {
 				bd.rejectValue("stringa1", "wrong");

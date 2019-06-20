@@ -109,7 +109,7 @@ public class FotoController{
 		List<Foto> lf = this.fotoService.getPhotoByNome(stringaRicerca.getPrimaParola());
 		if(!lf.isEmpty()) {
 			model.addAttribute("risultati", lf);
-			return "listaFoto";
+			return "fotografie";
 		}
 		else {
 			bindingResult.rejectValue("stringa1", "wrong");
@@ -129,7 +129,7 @@ public class FotoController{
 		Foto foto = this.fotoService.getPhotoById(id);
 		if(foto!=null) {
 			model.addAttribute("foto", foto);
-			return "foto";
+			return "fotografia";
 		}
 		else {
 			bindingResult.rejectValue("stringa1", "wrong");
