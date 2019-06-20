@@ -56,12 +56,12 @@ public class FotoController{
     @RequestMapping(value ="foto/save", method =RequestMethod.GET)
 	public String showForm(Model model) {
 		//model.addAttribute("albums", albumService.getAll());
-		//model.addAttribute("funzionari", funzionarioService.tuttiFunzionari());
+		model.addAttribute("fotografi", fotografoService.getFotografi());
         model.addAttribute("foto",new Foto());
 		return "admin/formSaveFoto";
 	}
     
-	@GetMapping("foto/{id}")
+	@GetMapping("foto/{nome}")
 	public String getPhoto(@PathVariable Long id, Model model) {
 		if(id!=null) {
 			model.addAttribute("foto", this.fotoService.getPhotoById(id));
@@ -104,7 +104,7 @@ public class FotoController{
 		return"fotografie";
 	}
 	
-	@GetMapping("/mostraFoto")
+	@GetMapping("/mostraFoto/{id}")
 	public String showFoto(Model model ,@RequestParam("id") Long id ){
 		Foto foto = fotoService.getPhotoById(id);
 		model.addAttribute("foto", foto);

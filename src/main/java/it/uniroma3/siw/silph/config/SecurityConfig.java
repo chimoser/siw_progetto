@@ -33,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.authorizeRequests().antMatchers(HttpMethod.GET, "/", "/index","/addRichiesta","/clienteForm").permitAll()
+		.authorizeRequests().antMatchers(HttpMethod.GET, "/", "/index","/richiestaForm","/associaCliente",
+				"/clienteForm", "/error","cliente").permitAll()
 		.antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ADMIN")
 		.anyRequest().authenticated()
 		.and().formLogin()
