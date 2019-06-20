@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.silph.model.Album;
 import it.uniroma3.siw.silph.model.Foto;
 import it.uniroma3.siw.silph.repository.FotoRepository;
 
@@ -37,6 +38,11 @@ public class FotoService {
 	@Transactional
 	public Foto getPhotoByNome(String nome) {
 		return this.fotoRepository.findByNome(nome);
+	}
+	
+	@Transactional
+	public List<Foto> getPhotosByAlbum(Album album){
+		return this.fotoRepository.findByAlbum(album);
 	}
 	
 	@Transactional

@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 		.authorizeRequests().antMatchers(HttpMethod.GET, "/", "/index").permitAll()
 		.antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ADMIN")
-		.anyRequest().authenticated()
+		.anyRequest().permitAll()
 		.and().formLogin()
 		.defaultSuccessUrl("/welcome")
 		.and().logout()

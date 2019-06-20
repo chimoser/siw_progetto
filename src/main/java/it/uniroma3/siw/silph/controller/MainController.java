@@ -15,7 +15,7 @@ public class MainController {
 		super();
 	}
 
-	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String index(Model model) {
 		return "home";
 	}

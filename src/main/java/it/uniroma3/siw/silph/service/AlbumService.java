@@ -24,7 +24,7 @@ public class AlbumService {
 	}
 	
 	@Transactional
-	public Album getAlbum(Long id) {
+	public Album getAlbumById(Long id) {
 		Optional<Album> a = this.albumRepository.findById(id);
 		if( a.isPresent() )
 			return a.get();

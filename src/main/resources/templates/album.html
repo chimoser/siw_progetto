@@ -54,19 +54,35 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2 class="title text-center">This is <span class="deco">the photo</span> you selected</h2>
+          <h2 class="title text-center">This is <span class="deco">the album</span> you selected</h2>
         </div>
         <div class="col-md-12">
           <div>
                 <div class="list-group">
-                    <a class="list-group-item">Nome: <b th:text="${foto.nome}"></b></a>
+                    <a class="list-group-item">Nome: <b th:text="${album.nome}"></b></a>
                     <a class="list-group-item">Fotografo: <b
-                            th:text="${foto.fotografo?.nome + ' ' + foto.fotografo?.cognome}"></b></a>
+                            th:text="${album.fotografo?.nome + ' ' + album.fotografo?.cognome}"></b></a>
                     <a class="list-group-item">Album: <b th:text="${foto.album?.nome}"></b></a>
-                    <div class="col-md-5">
-                	<img class="featurette-image img-responsive center-block img-rounded"
-                     src="${foto.link}" alt="img foto"/>
-                      <img src="img/portfolio01.jpg" class="img-responsive">
+                     <div class="col-md-12">
+          <div id="myGrid" class="grid-padding">
+            <div class="col-md-4 col-sm-4 padding-right-zero">
+            
+            	<div th:each="foto : ${fotografie}">
+            	<div class="service-box">
+							<img th:src="@{${foto.link}}" alt="Foto"
+								style="height: 220px; width: 220px" />
+							<h2>
+								<a th:text="${opera.nome}"
+									th:href="@{'/foto' + '/' + ${foto.id}}"></a>
+							</h2>
+				</div>
+				<a th:href="@{'/foto' + '/' + ${foto.id}}"
+				th:text="${foto.nome}"> Nome Foto 
+				<img th:src="@{'/static' + '/' + ${foto.link}" class="img-responsive"></a>
+            </div>
+				 
+            </div>
+          </div>
 				
             </div>
              </div>

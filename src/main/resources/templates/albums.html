@@ -8,7 +8,6 @@
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy">
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
@@ -18,7 +17,8 @@
 
   
 </head>
-<body id="photosPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="myFunction()">
+
+<body id="albumsPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="myFunction()">
   <div class="header">
     <div class="bg-color">
       <header id="main-header">
@@ -50,33 +50,33 @@
    </div>
 	
 	
-	<section id="portfolio" class="section-padding wow fadeInUp delay-05s">
+	<section id="listaAlbum" class="section-padding wow fadeInUp delay-05s">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2 class="title text-center">This is <span class="deco">the photo</span> you selected</h2>
+          <h2 class="title text-center">This are <span class="deco">all our</span> albums</h2>
         </div>
         <div class="col-md-12">
-          <div>
-                <div class="list-group">
-                    <a class="list-group-item">Nome: <b th:text="${foto.nome}"></b></a>
-                    <a class="list-group-item">Fotografo: <b
-                            th:text="${foto.fotografo?.nome + ' ' + foto.fotografo?.cognome}"></b></a>
-                    <a class="list-group-item">Album: <b th:text="${foto.album?.nome}"></b></a>
-                    <div class="col-md-5">
-                	<img class="featurette-image img-responsive center-block img-rounded"
-                     src="${foto.link}" alt="img foto"/>
-                      <img src="img/portfolio01.jpg" class="img-responsive">
-				
+          <div id="myGrid" class="grid-padding">
+            <div class="col-md-4 col-sm-4 padding-right-zero">
+            
+            	<div th:each="album : ${albums}">
+	            	<div class="service-box">
+								<img src="img/portfolio01.jpg" class="img-responsive"
+									style="height: 220px; width: 220px" />
+								<a th:href="@{'/album' + '/' + ${album.id}}"
+									th:text="${album.nome}"> Nome </a>
+					</div>
+            	</div>
             </div>
-             </div>
           </div>
         </div>
       </div>
     </div>
+    
+    
   </section>
-	
-	<footer class="footer-2 text-center-xs bg--white">
+  <footer class="footer-2 text-center-xs bg--white">
     <div class="container">
       <!--end row-->
       <div class="row">

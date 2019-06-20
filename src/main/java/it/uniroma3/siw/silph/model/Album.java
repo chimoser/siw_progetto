@@ -28,6 +28,11 @@ public class Album {
 		
 	}
 	
+	public Album(String name) {
+		super();
+		this.name = name;	
+	}
+	
 	public Album(Long id, String name, String description) {
 		super();
 		this.id = id;

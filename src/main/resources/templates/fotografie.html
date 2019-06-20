@@ -49,9 +49,25 @@
    </div>
 	
 	
-	<section id="portfolio" class="section-padding wow fadeInUp delay-05s">
+	<section id="listaFoto" class="section-padding wow fadeInUp delay-05s">
     <div class="container">
-      <div class="row">
+    <div class="row">
+			<ul>
+				<th:foreach th:each="opera: ${fotografie}">
+					<li>
+						<div class="service-box">
+							<img th:src="@{${foto.link}}" alt="Foto"
+								style="height: 220px; width: 220px" />
+							<h2>
+								<a th:text="${foto.nome}"
+									th:href="@{'/foto' + '/' + ${foto.id}}"></a>
+							</h2>
+						</div>
+					</li>
+				</th:foreach>
+			</ul>
+		</div>
+      <!--  <div class="row">
         <div class="col-md-12">
           <h2 class="title text-center">This is <span class="deco">a small</span> preview</h2>
         </div>
@@ -60,16 +76,33 @@
             <div class="col-md-4 col-sm-4 padding-right-zero">
             
             	<div th:each="foto : ${fotografie}">
+            	<div class="service-box">
+							<img th:src="@{${foto.link}}" alt="Foto"
+								style="height: 220px; width: 220px" />
+							<h2>
+								<a th:text="${opera.nome}"
+									th:href="@{'/foto' + '/' + ${foto.id}}"></a>
+							</h2>
+				</div>
 				<a th:href="@{'/foto' + '/' + ${foto.id}}"
 				th:text="${foto.nome}"> Nome Foto 
-				<img th:src="${foto.link}" class="img-responsive"></a>
-				</div>
-				
+				<img th:src="@{'/static' + '/' + ${foto.link}" class="img-responsive"></a> 
+				-->
+			<!-- 	</div>
+				 <div class="col-md-4 col-sm-4 padding-right-zero">
+              <img src="img/portfolio01.jpg" class="img-responsive">
+              <img src="img/port01.jpg" class="img-responsive">
+              <img src="img/port02.jpg" class="img-responsive">
+              <img src="img/portfolio01.jpg" class="img-responsive"> -->
+            </div>
+				 
             </div>
           </div>
         </div>
       </div>
     </div>
+    
+    
   </section>
 	
 	<footer class="footer-2 text-center-xs bg--white">
