@@ -53,6 +53,14 @@ public class FotoController{
     }
 	*/
     
+    @RequestMapping(value ="foto/save", method =RequestMethod.GET)
+	public String showForm(Model model) {
+		//model.addAttribute("albums", albumService.getAll());
+		//model.addAttribute("funzionari", funzionarioService.tuttiFunzionari());
+        model.addAttribute("foto",new Foto());
+		return "admin/formSaveFoto";
+	}
+    
 	@GetMapping("foto/{id}")
 	public String getPhoto(@PathVariable Long id, Model model) {
 		if(id!=null) {
@@ -72,8 +80,6 @@ public class FotoController{
 		
 	}
 	
-	
-	
 	@RequestMapping(method=RequestMethod.PUT, value="/{id}") // i want that particular id to change
 	public void updatePhoto(@RequestBody Foto photo, @PathVariable Long id) {
 		fotoService.updatePhoto(id, photo);
@@ -84,13 +90,13 @@ public class FotoController{
 		fotoService.deletePhoto(id);
 	}
 	
-	///////
+	@RequestMapping(value ="foto/salva", method =RequestMethod.GET)
 	public String showForm(Model model, Foto foto) {
 		List<Funzionario> funzionari = (List<Funzionario>) funzionarioService.findAll();
 		List<Album> albums = (List<Album>) albumService.getAll();
 		model.addAttribute("albums", albums);
 		model.addAttribute("funzionari", funzionari);
-		return "/Foto/formFoto";
+		return "/admin/formSaveFoto";
 	}
 	
 	@GetMapping("/fotoList")
@@ -102,7 +108,7 @@ public class FotoController{
 	public String showFoto(Model model ,@RequestParam("id") Long id ){
 		Foto foto = fotoService.getPhotoById(id);
 		model.addAttribute("foto", foto);
-		model.addAttribute("nomeAlbum",foto.getAlbum().getName());
+		model.addAttribute("nomeAlbum",foto.getAlbum().getNome());
 		
 		return "/admin/mostraFoto";
 	}

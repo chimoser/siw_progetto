@@ -1,9 +1,12 @@
 package it.uniroma3.siw.silph.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,7 +18,8 @@ public class Foto {
 	private String nome;
 	private String link;
 	
-	
+	@ManyToMany(mappedBy="fotografie")
+	private List<Richiesta> richieste;
 	
 	public Foto(String nome, String link) {
 		super();
@@ -79,6 +83,14 @@ public class Foto {
 
 	public void setAlbum(Album album) {
 		this.album = album;
+	}
+
+	public List<Richiesta> getRichieste() {
+		return richieste;
+	}
+
+	public void setRichieste(List<Richiesta> richieste) {
+		this.richieste = richieste;
 	}
 			
 }

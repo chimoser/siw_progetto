@@ -3,11 +3,11 @@
 	xmlns="http://www.w3.org/1999/html">
 <body>
 	<div>
-		<h4>Inserisci i dati sulle foto da acquistare</h4>
+		<h4>Inserisci i tuoi dati</h4>
 	</div>
 
 
-	<form th:action="@{/richiestaCliente}" method="GET"
+	<form th:action="@{/cliente}" method="GET"
 		th:object="${cliente}">
 		<table>
 			<tr>
@@ -26,12 +26,6 @@
 				<td><input type="text" th:field="*{email}" /></td>
 				<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
 			</tr>
-			<tr>
-				<td>Foto da acquistare:</td>
-				<td><input type="text" th:field="*{cognome}" /></td>
-				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
-			</tr>
-
 			<tr>
 				<td><button type="submit">Invio</button></td>
 			</tr>

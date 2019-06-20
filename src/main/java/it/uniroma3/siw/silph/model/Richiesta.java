@@ -1,9 +1,12 @@
 package it.uniroma3.siw.silph.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,6 +18,9 @@ public class Richiesta {
 	
 	@ManyToOne
 	private Cliente cliente;
+	
+	@ManyToMany
+	private List<Foto> fotografie;
 	
 	public Richiesta() {
 	}
@@ -35,4 +41,11 @@ public class Richiesta {
 		this.cliente = cliente;
 	}
 
+	public List<Foto> getFotografie() {
+		return fotografie;
+	}
+
+	public void setFotografie(List<Foto> fotografie) {
+		this.fotografie = fotografie;
+	}
 }

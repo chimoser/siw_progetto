@@ -16,7 +16,7 @@ public class FotografoService {
 	private FotografoRepository fotografoRepository;
 	
 	@Transactional
-	public List<Fotografo> tuttiFotografi(){
+	public List<Fotografo> getFotografi(){
 		return (List<Fotografo>) fotografoRepository.findAll();
 	}
 	
