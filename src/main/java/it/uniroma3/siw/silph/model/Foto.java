@@ -92,5 +92,17 @@ public class Foto {
 	public void setRichieste(List<Richiesta> richieste) {
 		this.richieste = richieste;
 	}
+
+	@Override
+	public int hashCode() {
+		return this.id.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Foto f = (Foto) obj;
+		return this.id.equals(f.getId());
+	}
+	
 			
 }
